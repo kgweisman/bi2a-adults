@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+
+<html lang="en">
+	
+  <head>
+      <title>BI2A-kids</title>
+      <script src="dependencies/jquery-2.1.3.min.js"></script>
+      <!-- <script src="dependencies/mmturkey.js"></script> -->
+      <!-- <link href="dependencies/bootstrap.min.css" rel="stylesheet"> -->
+      <link href="style.css" rel="stylesheet"/>
+	</head>
+
+  <body>
+
+<!-- pre-study: start slide -->
+
+	<div class="slide" id="start">
+		<p class="fun-text">animal game</p>
+        <p>press command + shift + f to go fullscreen</p>
+
+        <div class="session-info">
+	        <div class="control-group">
+		        <div class="controls">
+			        <label for="condition">sequence:</label>
+			        <input type="text" class="form-control" id="condition" name="condition" placeholder="1-4 (leave blank for random)" size="24"> 
+	    	    </div>
+	        </div>
+	        <div class="control-group">
+		        <div class="controls">
+			        <label for="dob">dob:</label>
+			        <input type="text" class="form-control" id="dob" name="dob" placeholder="m/d/yyyy (optional)" size="24"> 
+	    	    </div>
+	        </div>
+	        <div class="control-group">
+		        <div class="controls">
+			        <label for="subid">subid:</label>
+			        <input type="text" class="form-control" id="subid" name="subid" placeholder="e.g., p01, c27 (*required*)" size="24"> 
+	    	    </div>
+	        </div>
+        </div>
+
+		<button type="submit" class="btn btn-default";>next</button>
+
+	</div>
+
+<!-- pre-study: instructions -->
+
+	<div class="slide" id="instructions">
+		<p class="fun-text">how the game works</p>
+		<p class="instructions1">I have a bunch of pictures on my computer, and I want to know if there are any pictures of <i>animals</i>. But the funny thing about my pictures is that they're zoomed in really, really close, so you can only see a little bit at a time! I'm not sure which ones are animals, and which ones are not, so I want to know what <i>you</i> think.</p>
+		<p class="instructions2">can you help me find the animal pictures?</p>
+
+		<button type="submit" class="btn btn-default";>start the game</button>
+
+	</div>
+
+
+<!-- study: present images one by one -->
+
+	<div class="slide" id="stage">
+
+		<div class="progress">
+			<div class="progress-bar" role="progressbar" aria-valuenow="" aria-valuemin="0" aria-valuemax="100"></div>
+		</div>
+
+		<div class="header">
+			<table>
+				<colgroup>
+					<col style="width:10%">
+					<col style="width:80%">
+					<col style="width:10%">									
+				</colgroup>
+				<tbody>
+					<tr>
+						<td>
+							<p id="trialnum"></p>
+						</td>
+						<td>
+							<p id="question">do you think this one is an animal?</p>
+						</td>
+						<td>
+							<p align="right"><button type="end" class="btn btn-default" id="bail" align="right">end</button></p>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+		<img />
+
+		<div class="footer">
+			<table>
+				<colgroup>
+					<col style="width:35%">
+					<col style="width:5%">
+					<col style="width:20%">
+					<col style="width:5%">
+					<col style="width:35%">
+				</colgroup>
+				<tbody>
+					<tr>
+						<td>
+							<button type="submit" class="btn btn-default" id="maybe NO" value="-0.5">maybe N</button>
+							<button type="submit" class="btn btn-default" id="probably NO" value="-1.5">probably N</button>
+							<button type="submit" class="btn btn-default" id="definitely NO" value="-2.5">definitely N</button>
+						</td>
+						<td>
+							<button type="submit" class="btn btn-default" id="NO" value="NA">N</button>
+						</td>
+						<td>
+							<button type="submit" class="btn btn-default" id="skip" value="NA">skip</button>			
+						</td>
+						<td>
+							<button type="submit" class="btn btn-default" id="YES" value="NA">Y</button>
+						</td>
+						<td>
+							<button type="submit" class="btn btn-default" id="maybe YES" value="0.5">maybe Y</button>
+							<button type="submit" class="btn btn-default" id="probably YES" value="1.5">probably Y</button>
+							<button type="submit" class="btn btn-default" id="definitely YES" value="2.5">definitely Y</button>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+   	</div>
+
+<!-- post-study: present end of study sesion -->
+
+	<div class="slide" id="finished">
+		<p class="fun-text">the end!</p>
+		<img src="ending/zoo_pic2.jpg" id="endingpic"/>
+		<p>press command + shift + f to exit fullscreen</p>
+		<button type="submit" class="btn btn-default" id="start-over">start over</button>
+	</div>
+
+<!-- include javascript files -->
+
+    <!-- my experiment -->
+    <script src="helper.js"></script>
+    <script src="swatches.js"></script>
+    <script src="experiment.js"></script>
+    <script src="tracker.js"></script>
+
+    <!-- moment.js for date management -->
+    <!-- <script src="dependencies/moment.js"></script> -->
+
+    <!-- bootstrap -->
+    <!-- <script src="dependencies/bootstrap.min.js"></script> -->
+
+    <!-- fingerprinting -->
+    <!-- <script src="dependencies/store.js"></script> -->
+    <!-- <script src="dependencies/fingerprint.js"></script> -->
+
+  </body>
+
+</html>
