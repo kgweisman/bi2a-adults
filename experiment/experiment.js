@@ -8,62 +8,31 @@ var chosenCondition = randomElementNR(conditions);
 var experiment = {
 	trials: [],
 	// questionTypes: ["do you think this one can think?", "do you think this one has feelings?", "do you think this one can sense things nearby?", "do you think this can feel happy?", "do you think this one can feel hungry?", "do you think this one can feel pain?"],
-	condition: chosenCondition.condition,
-	trialData: [],
+	allData: {
+		// fingerprinting information
+		// fingerprintData: {},
+
+		// condition and session information
+		condition: chosenCondition.condition,
+
+		// demographic information about participant
+		age: "",
+		gender: "",
+		education: "",
+		ethnicity: [],
+		religion: [],
+		englishNative: "",
+		comments: "",
+
+		// trial by trial data
+		trialData: [],		
+	},
 
 	// what happens after completing all trials
 	end: function() {
 
-		// show ending slide	
-		showSlide("finished");
-		
-		// export data to csv
-		var data = experiment.trialData;
- 
-		function DownloadJSON2CSV(objArray) { // code source: http://www.zachhunter.com/2010/11/download-json-to-csv-using-javascript/
-		    // get trial-level info
-		    var array = typeof objArray != 'object' ? JSON.parse(objArray) : objArray;
-
-		    // add subject-level info
-		    for (trial in objArray) {
-		    	objArray[trial].condition = experiment.condition;
-		    };
-
-		    // add headers in a hacky way
-		    objArray.unshift({
-				condition: "condition",
-				trialNum: "trialNum",
-				swatch: "swatch",
-				response: "response",
-				responseCoded: "responseCoded",
-				rt: "rt"
-		    });
-
-		    // convert to csv
-		    var str = '';
-		     
-		    for (var i = 0; i < array.length; i++) {
-		        var line = '';
-		        for (var index in array[i]) {
-		            if(line != '') line += ','
-		         
-		            line += array[i][index];
-		        }
-		 
-		        str += line + '\r\n';
-		    }
-		 
-		    if (navigator.appName != 'Microsoft Internet Explorer')
-		    {
-		        window.open('data:text/csv;charset=utf-8,' + escape(str));
-		    }
-		    else
-		    {
-		        var popup = window.open('','csv','');
-		        popup.document.body.innerHTML = '<pre>' + str + '</pre>';
-		    }          
-		}
-		DownloadJSON2CSV(data);
+		// show demographics survey	
+		showSlide("demographics");
 	},
 
 	// what happens when participant sees a new trial
@@ -111,7 +80,7 @@ var experiment = {
 			var clickHandler = function(event) {
 				var endTime = (new Date()).getTime();
 				data.rt = endTime - startTime;
-				experiment.trialData.push(data);
+				experiment.allData.trialData.push(data);
 			};
 
 			$('.slide#stage button[type="submit"]').click(function() {
