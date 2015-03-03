@@ -78,260 +78,27 @@
 
 <!-- study: present images one by one -->
 
-	<div class="slide" id="stage">
+  <div class="slide" id="stage">
 
-		<div class="progress">
-			<div class="progress-bar" role="progressbar" aria-valuenow="" aria-valuemin="0" aria-valuemax="100"></div>
-		</div>
+    <div class="progress">
+      <div class="progress-bar" role="progressbar" aria-valuenow="" aria-valuemin="0" aria-valuemax="100"></div>
+    </div>
 
-		<img />
+    <img />
 
-        <div class="control-group" id="question1">
-			<p class="question">Do you think this one <span id="question1">{{}}</span>?</p>
-        	<div class="radio-group">
-        		<label for="question1-0">Definitely no</label>
-       			<input type="radio" name="question1" id="question1-0" value="-3" />
-   			</div>
-        	<div class="radio-group">
-        		<label for="question1-1">Probably no</label>
-       			<input type="radio" name="question1" id="question1-1" value="-2" />
-   			</div>
-        	<div class="radio-group">
-        		<label for="question1-2">Maybe no</label>
-       			<input type="radio" name="question1" id="question1-2" value="-1" />
-   			</div>
-        	<div class="radio-group">
-        		<label for="question1-3">Equally likely yes/no</label>
-       			<input type="radio" name="question1" id="question1-3" value="0" />
-   			</div>
-        	<div class="radio-group">
-        		<label for="question1-4">Maybe yes</label>
-       			<input type="radio" name="question1" id="question1-4" value="1" />
-   			</div>
-        	<div class="radio-group">
-        		<label for="question1-5">Probably yes</label>
-       			<input type="radio" name="question1" id="question1-5" value="2" />
-   			</div>
-        	<div class="radio-group">
-        		<label for="question1-6">Definitely yes</label>
-       			<input type="radio" name="question1" id="question1-6" value="3" />
-   			</div>
-        </div>
+    <p class="fun-text" id="question">Do you think this one <span id="question-text">{{}}</span>?</p>
 
-        <div class="control-group" id="question2">
-			<p class="question">Do you think this one <span id="question2">{{}}</span>?</p>
-        	<div class="radio-group">
-        		<label for="question2-0">Definitely no</label>
-       			<input type="radio" name="question2" id="question2-0" value="-3" />
-   			</div>
-        	<div class="radio-group">
-        		<label for="question2-1">Probably no</label>
-       			<input type="radio" name="question2" id="question2-1" value="-2" />
-   			</div>
-        	<div class="radio-group">
-        		<label for="question2-2">Maybe no</label>
-       			<input type="radio" name="question2" id="question2-2" value="-1" />
-   			</div>
-        	<div class="radio-group">
-        		<label for="question2-3">Equally likely yes/no</label>
-       			<input type="radio" name="question2" id="question2-3" value="0" />
-   			</div>
-        	<div class="radio-group">
-        		<label for="question2-4">Maybe yes</label>
-       			<input type="radio" name="question2" id="question2-4" value="1" />
-   			</div>
-        	<div class="radio-group">
-        		<label for="question2-5">Probably yes</label>
-       			<input type="radio" name="question2" id="question2-5" value="2" />
-   			</div>
-        	<div class="radio-group">
-        		<label for="question2-6">Definitely yes</label>
-       			<input type="radio" name="question2" id="question2-6" value="3" />
-   			</div>
-        </div>
+    <div>
+      <button type="submit" class="btn btn-default" name="response" id="definitely no" value="3">Definitely<br />NO</button>
+      <button type="submit" class="btn btn-default" name="response" id="probably no" value="-2">Probably<br />NO</button>
+      <button type="submit" class="btn btn-default" name="response" id="maybe no" value="-1">Maybe<br />NO</button>
+      <button type="submit" class="btn btn-default" name="response" id="equally yes/no" value="0">Equally likely<br />YES/NO</button>
+      <button type="submit" class="btn btn-default" name="response" id="maybe yes" value="1">Maybe<br />YES</button>
+      <button type="submit" class="btn btn-default" name="response" id="probably yes" value="2">Probably<br />YES</button>
+      <button type="submit" class="btn btn-default" name="response" id="definitely yes" value="3">Definitely<br />YES</button>
+    </div>
 
-        <div class="control-group" id="question3">
-			<p class="question">Do you think this one <span id="question3">{{}}</span>?</p>
-        	<div class="radio-group">
-        		<label for="question3-0">Definitely no</label>
-       			<input type="radio" name="question3" id="question3-0" value="-3" />
-   			</div>
-        	<div class="radio-group">
-        		<label for="question3-1">Probably no</label>
-       			<input type="radio" name="question3" id="question3-1" value="-2" />
-   			</div>
-        	<div class="radio-group">
-        		<label for="question3-2">Maybe no</label>
-       			<input type="radio" name="question3" id="question3-2" value="-1" />
-   			</div>
-        	<div class="radio-group">
-        		<label for="question3-3">Equally likely yes/no</label>
-       			<input type="radio" name="question3" id="question3-3" value="0" />
-   			</div>
-        	<div class="radio-group">
-        		<label for="question3-4">Maybe yes</label>
-       			<input type="radio" name="question3" id="question3-4" value="1" />
-   			</div>
-        	<div class="radio-group">
-        		<label for="question3-5">Probably yes</label>
-       			<input type="radio" name="question3" id="question3-5" value="2" />
-   			</div>
-        	<div class="radio-group">
-        		<label for="question3-6">Definitely yes</label>
-       			<input type="radio" name="question3" id="question3-6" value="3" />
-   			</div>
-        </div>
-
-        <div class="control-group" id="question4">
-			<p class="question">Do you think this one <span id="question4">{{}}</span>?</p>
-        	<div class="radio-group">
-        		<label for="question4-0">Definitely no</label>
-       			<input type="radio" name="question4" id="question4-0" value="-3" />
-   			</div>
-        	<div class="radio-group">
-        		<label for="question4-1">Probably no</label>
-       			<input type="radio" name="question4" id="question4-1" value="-2" />
-   			</div>
-        	<div class="radio-group">
-        		<label for="question4-2">Maybe no</label>
-       			<input type="radio" name="question4" id="question4-2" value="-1" />
-   			</div>
-        	<div class="radio-group">
-        		<label for="question4-3">Equally likely yes/no</label>
-       			<input type="radio" name="question4" id="question4-3" value="0" />
-   			</div>
-        	<div class="radio-group">
-        		<label for="question4-4">Maybe yes</label>
-       			<input type="radio" name="question4" id="question4-4" value="1" />
-   			</div>
-        	<div class="radio-group">
-        		<label for="question4-5">Probably yes</label>
-       			<input type="radio" name="question4" id="question4-5" value="2" />
-   			</div>
-        	<div class="radio-group">
-        		<label for="question4-6">Definitely yes</label>
-       			<input type="radio" name="question4" id="question4-6" value="3" />
-   			</div>
-        </div>
-
-        <div class="control-group" id="question5">
-			<p class="question">Do you think this one <span id="question5">{{}}</span>?</p>
-        	<div class="radio-group">
-        		<label for="question5-0">Definitely no</label>
-       			<input type="radio" name="question5" id="question5-0" value="-3" />
-   			</div>
-        	<div class="radio-group">
-        		<label for="question5-1">Probably no</label>
-       			<input type="radio" name="question5" id="question5-1" value="-2" />
-   			</div>
-        	<div class="radio-group">
-        		<label for="question5-2">Maybe no</label>
-       			<input type="radio" name="question5" id="question5-2" value="-1" />
-   			</div>
-        	<div class="radio-group">
-        		<label for="question5-3">Equally likely yes/no</label>
-       			<input type="radio" name="question5" id="question5-3" value="0" />
-   			</div>
-        	<div class="radio-group">
-        		<label for="question5-4">Maybe yes</label>
-       			<input type="radio" name="question5" id="question5-4" value="1" />
-   			</div>
-        	<div class="radio-group">
-        		<label for="question5-5">Probably yes</label>
-       			<input type="radio" name="question5" id="question5-5" value="2" />
-   			</div>
-        	<div class="radio-group">
-        		<label for="question5-6">Definitely yes</label>
-       			<input type="radio" name="question5" id="question5-6" value="3" />
-   			</div>
-        </div>        
-
-        <div class="control-group" id="question6">
-			<p class="question">Do you think this one <span id="question6">{{}}</span>?</p>
-        	<div class="radio-group">
-        		<label for="question6-0">Definitely no</label>
-       			<input type="radio" name="question6" id="question6-0" value="-3" />
-   			</div>
-        	<div class="radio-group">
-        		<label for="question6-1">Probably no</label>
-       			<input type="radio" name="question6" id="question6-1" value="-2" />
-   			</div>
-        	<div class="radio-group">
-        		<label for="question6-2">Maybe no</label>
-       			<input type="radio" name="question6" id="question6-2" value="-1" />
-   			</div>
-        	<div class="radio-group">
-        		<label for="question6-3">Equally likely yes/no</label>
-       			<input type="radio" name="question6" id="question6-3" value="0" />
-   			</div>
-        	<div class="radio-group">
-        		<label for="question6-4">Maybe yes</label>
-       			<input type="radio" name="question6" id="question6-4" value="1" />
-   			</div>
-        	<div class="radio-group">
-        		<label for="question6-5">Probably yes</label>
-       			<input type="radio" name="question6" id="question6-5" value="2" />
-   			</div>
-        	<div class="radio-group">
-        		<label for="question6-6">Definitely yes</label>
-       			<input type="radio" name="question6" id="question6-6" value="3" />
-   			</div>
-        </div>
-
-
-
-
-
-
-
-
-
-
-<!-- 		<div>
-			<p id="question-wrapperA">Do you think this one <span id="question1">{{}}</span>?</p>
-			<p id="question-wrapperB">Do you think this one <span id="question2">{{}}</span>?</p>
-			<p id="question-wrapperB">Do you think this one <span id="question3">{{}}</span>?</p>
-			<p id="question-wrapperB">Do you think this one <span id="question4">{{}}</span>?</p>
-			<p id="question-wrapperB">Do you think this one <span id="question5">{{}}</span>?</p>
-			<p id="question-wrapperB">Do you think this one <span id="question6">{{}}</span>?</p>
-		</div>
-
-		<div class="footer">
-			<table>
-				<colgroup>
-					<col style="width:35%">
-					<col style="width:5%">
-					<col style="width:20%">
-					<col style="width:5%">
-					<col style="width:35%">
-				</colgroup>
-				<tbody>
-					<tr>
-						<td>
-							<button type="submit" class="btn btn-default" id="maybe NO" value="-0.5">maybe N</button>
-							<button type="submit" class="btn btn-default" id="probably NO" value="-1.5">probably N</button>
-							<button type="submit" class="btn btn-default" id="definitely NO" value="-2.5">definitely N</button>
-						</td>
-						<td>
-							<button type="submit" class="btn btn-default" id="NO" value="NA">N</button>
-						</td>
-						<td>
-							<button type="submit" class="btn btn-default" id="skip" value="NA">skip</button>			
-						</td>
-						<td>
-							<button type="submit" class="btn btn-default" id="YES" value="NA">Y</button>
-						</td>
-						<td>
-							<button type="submit" class="btn btn-default" id="maybe YES" value="0.5">maybe Y</button>
-							<button type="submit" class="btn btn-default" id="probably YES" value="1.5">probably Y</button>
-							<button type="submit" class="btn btn-default" id="definitely YES" value="2.5">definitely Y</button>
-						</td>
-					</tr>
-				</tbody>
-			</table>
-		</div> -->
-
-   	</div>
+ 	</div>
 
 <!-- post-study: present end of study sesion -->
 

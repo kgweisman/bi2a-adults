@@ -9,7 +9,6 @@ var experiment = {
 	trials: [],
 	// questionTypes: ["do you think this one can think?", "do you think this one has feelings?", "do you think this one can sense things nearby?", "do you think this can feel happy?", "do you think this one can feel hungry?", "do you think this one can feel pain?"],
 	condition: chosenCondition.condition,
-	questions: chosenCondition.questions.slice(),
 	trialData: [],
 
 	// what happens after completing all trials
@@ -83,24 +82,9 @@ var experiment = {
 				phase: "study",
 				trialNum: 49 - this.trials.length,
 				swatch: "",
-				question1: "",
-				response1: "",
-				responseCoded1: NaN,
-				question2: "",
-				response2: "",
-				responseCoded2: NaN,
-				question3: "",
-				response3: "",
-				responseCoded3: NaN,
-				question4: "",
-				response4: "",
-				responseCoded4: NaN,
-				question5: "",
-				response5: "",
-				responseCoded5: NaN,
-				question6: "",
-				response6: "",
-				responseCoded6: NaN,
+				question: "",
+				response: "",
+				responseCoded: NaN,
 				rt: NaN
 			};
 
@@ -109,31 +93,9 @@ var experiment = {
 			$('#stage .progress-bar').attr("aria-valuenow", percentComplete.toString());
 			$('#stage .progress-bar').css("width", percentComplete.toString()+"%");
 
-			// choose random order of questions
-			var questionsOrder = chosenCondition.questions.slice()
-
-			for (i = 0; i < chosenCondition.questions.length; i++) {
-				// var question = (question+1).toString();
-				data["question"+(i+1)] = randomElementNR(questionsOrder);
-			}
-
-			// display questions
-			if (experiment.condition === "animalCategorization") {
-				console.log("yes");
-				$('.slide#stage span#question1').text(data.question1);
-				$('div#question2.control-group').hide();
-				$('div#question3.control-group').hide();
-				$('div#question4.control-group').hide();
-				$('div#question5.control-group').hide();
-				$('div#question6.control-group').hide();
-			} else {
-				$('.slide#stage span#question1').text(data.question1);
-				$('.slide#stage span#question2').text(data.question2);
-				$('.slide#stage span#question3').text(data.question3);
-				$('.slide#stage span#question4').text(data.question4);
-				$('.slide#stage span#question5').text(data.question5);
-				$('.slide#stage span#question6').text(data.question6);
-			}
+			// record and display question
+			data.question = chosenCondition.question;
+			$('.slide#stage span#question-text').text(data.question);
 
 			// choose random image to display
 			var chosenSwatch = randomElementNR(this.trials);

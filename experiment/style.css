@@ -43,13 +43,17 @@ p.legal {
     text-align: justify;
 }
 
+#question-text {
+	font-weight: bold;
+}
+
 /*buttons*/
 .btn {
 	background-color: rgb(240, 240, 240);
 	/*font-family: "Bookman Old Style", Bookman, serif;*/
 	/*color: rgb(240, 220, 260);*/
 	font-size: 16px;
-	padding: 6px;
+	padding: 8px;
     -moz-border-radius: 10px;
     -webkit-border-radius: 10px;
     -webkit-tap-highlight-color: rgba(0,0,0,0);
@@ -61,69 +65,19 @@ p.legal {
 	background-color: rgba(250, 90, 0, .2);
 }
 
+.btn[name="response"] {
+	font-size: 12px;
+	width: 85px;
+}
+
 button:focus {
 	outline:0 !important;
 }
 
-/*headers & footers*/
-.header, .footer {
-	margin: 0 auto 0 auto;
-}
-
-
-
-
-
-
-
-/*from kid study...*/
-/*#start {
-	padding-top: 200px;
-	padding-bottom: 200px;
-}*/
-
-.session-info {
-	padding: 500px auto 500px auto;
-}
-
-table {
-	width: 100%;
-	margin: 0 auto 0 auto;
-/*	margin-left: auto;
-	margin-right: auto;
-	margin-top: 10px;
-	margin-bottom: 10px;
-*/}
-
-tr {
-	margin: 0;
-}
-
-/*p.fun-text {
-	font-size: 80px;
-	color: rgb(250, 90, 0);
-	margin-top: 10px;
-	margin-bottom: 10px;
-	-webkit-margin-before: 0;
-	-webkit-margin-after: 0;
-}*/
-
-/*p.instructions1 {
-	width: 30%;
-	margin: 150px auto 10px auto;
-	text-align: justify;
-}
-
-p.instructions2 {
-	width: 35%;
-	margin: 10px auto 150px auto;
-	text-align: center;
-	font-size: 40px;
-}*/
-
+/*images*/
 img {
 	border: 2px solid black;
-	width: 600px;
+	width: 500px;
 	margin-top: 10px;
 	margin-bottom: 10px
 }
@@ -132,29 +86,8 @@ img#endingpic {
 	width: 500px;
 }
 
-.session-info {
-	width: 400px;
-	margin: auto;
-}
 
-.question {
-	/*text-align: left;*/
-	font-weight: bold;
-	margin: 10px auto 0px auto;
-}
-
-.radio-group {
-    display: inline-block;
-    text-align: center;
-    font-size: 12px;
-    margin: 8px;
-}
-
-.radio-group label {
-    display: block;
-    font-weight: normal;
-}
-
+/*inputs*/
 input {
 	background-color: rgb(250,250,250);
 	font-family: "Bookman Old Style", Bookman, serif;
