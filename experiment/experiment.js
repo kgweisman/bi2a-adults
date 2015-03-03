@@ -118,16 +118,21 @@ var experiment = {
 			}
 
 			// display questions
-			if (this.condtion === "animalCategorization") {
-				$('p#question-wrapperB').hide();
-				$('.slide#stage #question1').text(data.question1);
+			if (experiment.condition === "animalCategorization") {
+				console.log("yes");
+				$('.slide#stage span#question1').text(data.question1);
+				$('div#question2.control-group').hide();
+				$('div#question3.control-group').hide();
+				$('div#question4.control-group').hide();
+				$('div#question5.control-group').hide();
+				$('div#question6.control-group').hide();
 			} else {
-				$('.slide#stage #question1').text(data.question1);
-				$('.slide#stage #question2').text(data.question2);
-				$('.slide#stage #question3').text(data.question3);
-				$('.slide#stage #question4').text(data.question4);
-				$('.slide#stage #question5').text(data.question5);
-				$('.slide#stage #question6').text(data.question6);
+				$('.slide#stage span#question1').text(data.question1);
+				$('.slide#stage span#question2').text(data.question2);
+				$('.slide#stage span#question3').text(data.question3);
+				$('.slide#stage span#question4').text(data.question4);
+				$('.slide#stage span#question5').text(data.question5);
+				$('.slide#stage span#question6').text(data.question6);
 			}
 
 			// choose random image to display
