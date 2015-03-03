@@ -8,7 +8,7 @@ var chosenCondition = randomElementNR(["animalCategorization", "propertyInferenc
 // create experiment object
 var experiment = {
 	trials: [],
-	bonusTrials: [],
+	// bonusTrials: [],
 	practiceTrials: [],
 	questionTypes: ["do you think this one can think?", "do you think this one has feelings?", "do you think this one can sense things nearby?", "do you think this can feel happy?", "do you think this one can feel hungry?", "do you think this one can feel pain?"],
 	condition: chosenCondition,
@@ -76,102 +76,102 @@ var experiment = {
 		DownloadJSON2CSV(data);
 	},
 
-	// what happens when participant plays bonus rounds
-	bonus: function() {
+	// // what happens when participant plays bonus rounds
+	// bonus: function() {
 
-		// set up how to play a bonus trial
-		function playBonus() {
+	// 	// set up how to play a bonus trial
+	// 	function playBonus() {
 
-			// create place to store data for this bonus trial
-			var data = {
-				phase: "bonus",
-				question: "",
-				trialNum: 19 - experiment.bonusTrials.length,
-				swatch: "",
-				response: "",
-				responseCoded: "",
-				rt: NaN
-			}
+	// 		// create place to store data for this bonus trial
+	// 		var data = {
+	// 			phase: "bonus",
+	// 			question: "",
+	// 			trialNum: 19 - experiment.bonusTrials.length,
+	// 			swatch: "",
+	// 			response: "",
+	// 			responseCoded: "",
+	// 			rt: NaN
+	// 		}
 
-			// display progress bar
-			var percentComplete = (data.trialNum-13)/6 * 100;
-			$('#stage .progress-bar').attr("aria-valuenow", percentComplete.toString());
-			$('#stage .progress-bar').css("width", percentComplete.toString()+"%");
+	// 		// display progress bar
+	// 		var percentComplete = (data.trialNum-13)/6 * 100;
+	// 		$('#stage .progress-bar').attr("aria-valuenow", percentComplete.toString());
+	// 		$('#stage .progress-bar').css("width", percentComplete.toString()+"%");
 
-			// restyle progress bar
-			$('#stage .progress').css("background-color", "rgba(170, 120, 240, .1)");
-			$('#stage .progress-bar').css("background-color", "rgba(170, 120, 240, 1)");
+	// 		// restyle progress bar
+	// 		$('#stage .progress').css("background-color", "rgba(170, 120, 240, .1)");
+	// 		$('#stage .progress-bar').css("background-color", "rgba(170, 120, 240, 1)");
 
-			// choose random image to display
-			var chosenSwatch = randomElementNR(experiment.bonusTrials);
-			data.swatch = chosenSwatch.swatchName;
+	// 		// choose random image to display
+	// 		var chosenSwatch = randomElementNR(experiment.bonusTrials);
+	// 		data.swatch = chosenSwatch.swatchName;
 
-			// display chosen image
-			$('.slide#stage img').attr("src", chosenSwatch.imageSource);
+	// 		// display chosen image
+	// 		$('.slide#stage img').attr("src", chosenSwatch.imageSource);
 
-			// display randomly selected question
-			var chosenQuestion = randomElementNR(experiment.questionTypes);
-			data.question = chosenQuestion.slice();
-			$('.slide#stage #question').text(chosenQuestion);
+	// 		// display randomly selected question
+	// 		var chosenQuestion = randomElementNR(experiment.questionTypes);
+	// 		data.question = chosenQuestion.slice();
+	// 		$('.slide#stage #question').text(chosenQuestion);
 
-			// show trial
-			showSlide("stage");
+	// 		// show trial
+	// 		showSlide("stage");
 
-			// record response and rt
-			var startTime = (new Date()).getTime();
+	// 		// record response and rt
+	// 		var startTime = (new Date()).getTime();
 
-			var clickHandler = function(event) {
-				var endTime = (new Date()).getTime();
-				data.rt = endTime - startTime;
-				experiment.trialData.push(data);
-			};
+	// 		var clickHandler = function(event) {
+	// 			var endTime = (new Date()).getTime();
+	// 			data.rt = endTime - startTime;
+	// 			experiment.trialData.push(data);
+	// 		};
 
-			$('.slide#stage button[type="submit"]').click(function() {
-				// record response
-				data.response = $(this).attr('id');
-				data.responseCoded = parseFloat($(this).attr('value'));
+	// 		$('.slide#stage button[type="submit"]').click(function() {
+	// 			// record response
+	// 			data.response = $(this).attr('id');
+	// 			data.responseCoded = parseFloat($(this).attr('value'));
 
-				// end trial
-				clickHandler();
-				$('.slide#stage button[type="submit"]').unbind().blur();
-				window.scrollTo(0, 0);
-				experiment.next();
-			});
-		};
+	// 			// end trial
+	// 			clickHandler();
+	// 			$('.slide#stage button[type="submit"]').unbind().blur();
+	// 			window.scrollTo(0, 0);
+	// 			experiment.next();
+	// 		});
+	// 	};
 
-		if (experiment.bonusTrials.length === 0) {
+	// 	if (experiment.bonusTrials.length === 0) {
 
-			// end study session
-			experiment.end();
+	// 		// end study session
+	// 		experiment.end();
 
-		} else if (experiment.bonusTrials.length === 6) {
+	// 	} else if (experiment.bonusTrials.length === 6) {
 
-			$(".slide").hide();
+	// 		$(".slide").hide();
 
-			// give option of bonus round
-			var chooseBonus = window.confirm("Do you want to play a bonus round?");
-			if (chooseBonus === true) {
-				// if child says yes...
-				playBonus();
+	// 		// give option of bonus round
+	// 		var chooseBonus = window.confirm("Do you want to play a bonus round?");
+	// 		if (chooseBonus === true) {
+	// 			// if child says yes...
+	// 			playBonus();
 
-			} else {
-			// if child says no...
+	// 		} else {
+	// 		// if child says no...
 
-			experiment.end();
-			}			
+	// 		experiment.end();
+	// 		}			
 
-		} else {
-			playBonus();
-		}
-	},
+	// 	} else {
+	// 		playBonus();
+	// 	}
+	// },
 
 	// what happens when participant does practice trials
 	practice: function() {
 
-		// set up how to play a bonus trial
+		// set up how to play a practice trial
 		function playPractice() {
 
-			// create place to store data for this bonus trial
+			// create place to store data for this practice trial
 			var data = {
 				phase: "practice",
 				question: "do you think this one is an animal?",
@@ -183,7 +183,7 @@ var experiment = {
 			}
 
 			// display progress bar
-			var percentComplete = (data.trialNum-1)/15 * 100;
+			var percentComplete = (data.trialNum-1)/51 * 100;
 			$('#stage .progress-bar').attr("aria-valuenow", percentComplete.toString());
 			$('#stage .progress-bar').css("width", percentComplete.toString()+"%");
 
@@ -235,8 +235,8 @@ var experiment = {
 	next: function() {
 		if (this.trials.length === 0) {
 
-			// move on to bonus round
-			experiment.bonus();
+			// move on to end of experiment
+			experiment.end();
 
 		} else {
 
@@ -244,7 +244,7 @@ var experiment = {
 			var data = {
 				phase: "study",
 				question: "do you think this one is an animal?",
-				trialNum: 15 - this.trials.length,
+				trialNum: 51 - this.trials.length,
 				swatch: "",
 				response: "",
 				responseCoded: NaN,
@@ -252,7 +252,7 @@ var experiment = {
 			};
 
 			// display progress bar
-			var percentComplete = (data.trialNum-1)/15 * 100;
+			var percentComplete = (data.trialNum-1)/51 * 100;
 			$('#stage .progress-bar').attr("aria-valuenow", percentComplete.toString());
 			$('#stage .progress-bar').css("width", percentComplete.toString()+"%");
 
@@ -301,7 +301,7 @@ $('.slide#instructions button').click(function() {
 	// set parameters of this session
 	experiment.practiceTrials = swatchSetPractice.slice();
 	experiment.trials = swatches.slice();
-	experiment.bonusTrials = [swatches[0], swatches[1], swatches[5], swatches[6], swatches[10], swatches[11]];
+	// experiment.bonusTrials = [swatches[0], swatches[1], swatches[5], swatches[6], swatches[10], swatches[11]];
 	experiment.condition = chosenCondition.slice();
 
 	// go to practice trial
