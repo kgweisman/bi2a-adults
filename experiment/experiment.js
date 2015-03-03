@@ -363,9 +363,16 @@ $('.slide#consent button').click(function() {
 // 	}
 // });
 
-// bail out if needed
+// continue to experiment
 $('.slide#instructions button').click(function() { 
-	// go to end
+
+	// set parameters of this session
+	experiment.practiceTrials = swatchSetPractice.slice();
+	experiment.trials = chosenCondition.swatchOrder.slice();
+	experiment.bonusTrials = [chosenCondition.swatchOrder[0], chosenCondition.swatchOrder[1],chosenCondition.swatchOrder[5], chosenCondition.swatchOrder[6], chosenCondition.swatchOrder[10], chosenCondition.swatchOrder[11]];
+	experiment.condition = chosenCondition.condition.slice();
+
+	// go to practice trial
 	experiment.practice();
 });
 
