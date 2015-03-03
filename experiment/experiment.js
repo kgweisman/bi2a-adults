@@ -2,7 +2,8 @@
 var date = new Date();
 
 // set up condition variable (random assignment)
-var chosenCondition = randomElementNR(swatchSets);
+// var chosenCondition = randomElementNR(swatchSets);
+var chosenCondition = randomElementNR(["animalCategorization", "propertyInference"]);
 
 // create experiment object
 var experiment = {
@@ -299,19 +300,19 @@ $('.slide#instructions button').click(function() {
 
 	// set parameters of this session
 	experiment.practiceTrials = swatchSetPractice.slice();
-	experiment.trials = chosenCondition.swatchOrder.slice();
-	experiment.bonusTrials = [chosenCondition.swatchOrder[0], chosenCondition.swatchOrder[1],chosenCondition.swatchOrder[5], chosenCondition.swatchOrder[6], chosenCondition.swatchOrder[10], chosenCondition.swatchOrder[11]];
-	experiment.condition = chosenCondition.condition.slice();
+	experiment.trials = swatches.slice();
+	experiment.bonusTrials = [swatches[0], swatches[1], swatches[5], swatches[6], swatches[10], swatches[11]];
+	experiment.condition = chosenCondition.slice();
 
 	// go to practice trial
 	experiment.practice();
 });
 
-// bail out if needed
-$('.slide#stage button[type="end"]').click(function() { 
-	// go to end
-	experiment.end();
-});
+// // bail out if needed
+// $('.slide#stage button[type="end"]').click(function() { 
+// 	// go to end
+// 	experiment.end();
+// });
 
 // start!
 showSlide("preload");

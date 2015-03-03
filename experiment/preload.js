@@ -59,8 +59,8 @@ function onLoadedAll() {
 /* preload images */
 // declare the set of images we'd like to load
 var images = [];
-for (i = 0; i < Object.keys(chosenCondition.swatchOrder).length; i++) {
-	images[i] = chosenCondition.swatchOrder[i].imageSource;
+for (i = 0; i < Object.keys(swatches).length; i++) {
+	images[i] = swatches[i].imageSource;
 }
 
 // start!

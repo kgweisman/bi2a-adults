@@ -24,44 +24,44 @@ for (i in swatchNameList) {
 	addSwatch(swatchNameList[i]);
 	swatches[i].animalRatingAdultUS = animalRatingAdultUSList[i];
 }
-swatches.sort(function(a, b) {return a.animalRatingAdultUS - b.animalRatingAdultUS});
+// swatches.sort(function(a, b) {return a.animalRatingAdultUS - b.animalRatingAdultUS});
 
-// make 4 sets of 16 swatches, evenly spaced
-var swatchSets;
+// // make 4 sets of 16 swatches, evenly spaced
+// var swatchSets;
 
-function makeSwatchSets(setNum) {
-	// make swatch sets
-	var swatchSet1 = [];
-	var swatchSet2 = [];
-	var swatchSet3 = [];
-	var swatchSet4 = [];
+// function makeSwatchSets(setNum) {
+// 	// make swatch sets
+// 	var swatchSet1 = [];
+// 	var swatchSet2 = [];
+// 	var swatchSet3 = [];
+// 	var swatchSet4 = [];
 
-	// distribute by US adult animal rating
-	for (i = 0; i < swatchNameList.length; i++) {
-		var iModulo = i % 4; 
-		switch (iModulo) {
-			case 0: 
-				swatchSet1.push(swatches[i]);
-				break;
-			case 1:
-				swatchSet2.push(swatches[i]);
-				break;
-			case 2:
-				swatchSet3.push(swatches[i]);
-				break;			
-			case 3:
-				swatchSet4.push(swatches[i]);
-				break;
-			default:
-				console.log("error in making swatch sets"); 
-		}
-	};
+// 	// distribute by US adult animal rating
+// 	for (i = 0; i < swatchNameList.length; i++) {
+// 		var iModulo = i % 4; 
+// 		switch (iModulo) {
+// 			case 0: 
+// 				swatchSet1.push(swatches[i]);
+// 				break;
+// 			case 1:
+// 				swatchSet2.push(swatches[i]);
+// 				break;
+// 			case 2:
+// 				swatchSet3.push(swatches[i]);
+// 				break;			
+// 			case 3:
+// 				swatchSet4.push(swatches[i]);
+// 				break;
+// 			default:
+// 				console.log("error in making swatch sets"); 
+// 		}
+// 	};
 
-	// combine sets into one array
-	swatchSets = [{condition: "set1", swatchOrder: swatchSet1}, {condition: "set2",swatchOrder: swatchSet2}, {condition: "set3", swatchOrder: swatchSet3}, {condition: "set4", swatchOrder: swatchSet4}];
-}
+// 	// combine sets into one array
+// 	swatchSets = [{condition: "set1", swatchOrder: swatchSet1}, {condition: "set2",swatchOrder: swatchSet2}, {condition: "set3", swatchOrder: swatchSet3}, {condition: "set4", swatchOrder: swatchSet4}];
+// }
 
-makeSwatchSets();
+// makeSwatchSets();
 
 // make practice swatch set
 var swatchSetPractice = [];
