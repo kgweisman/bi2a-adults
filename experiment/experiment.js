@@ -294,60 +294,6 @@ $('.slide#consent button').click(function() {
 	showSlide("instructions");
 });
 
-// $('.slide#start button').click(function() { 
-
-// 	// if no subid, prevent progress
-// 	if($('input#subid').val() === "") {
-// 		window.alert("Please enter a subid.");
-
-// 	// if subid has been used before, prevent progress
-// 	} else if(subidsMasterList.lastIndexOf($('input#subid').val()) !== -1) {
-// 		window.alert("This subid has been used before. Please enter a new subid.")
-
-// 	// if subid provided is new, proceed!
-// 	} else {
-// 		// record subid in tracker file
-// 		subidsMasterList.push($('input#subid').val());
-
-// 		// record subid in experiment object
-// 		experiment.subid = $('input#subid').val();
-
-// 		// record condition selection
-// 		switch($('input#condition').val()) {
-// 			case "1":
-// 				chosenCondition = swatchSets[0];
-// 				break;
-// 			case "2":
-// 				chosenCondition = swatchSets[1];
-// 				break;
-// 			case "3":
-// 				chosenCondition = swatchSets[2];
-// 				break;
-// 			case "4":
-// 				chosenCondition = swatchSets[3];
-// 				break;
-// 			case "":
-// 				chosenCondition = randomElementNR(swatchSets);
-// 				break;
-// 			default:
-// 				window.alert("Enter a valid condition number (1, 2, 3, or 4), or leave blank for random assignment.");
-// 				break;
-// 	};
-
-// 	// set parameters of this session
-// 	experiment.practiceTrials = swatchSetPractice.slice();
-// 	experiment.trials = chosenCondition.swatchOrder.slice();
-// 	experiment.bonusTrials = [chosenCondition.swatchOrder[0], chosenCondition.swatchOrder[1],chosenCondition.swatchOrder[5], chosenCondition.swatchOrder[6], chosenCondition.swatchOrder[10], chosenCondition.swatchOrder[11]];
-// 	experiment.condition = chosenCondition.condition.slice();
-
-// 	// record dob if entered
-// 	experiment.dateOfBirth = $('input#dob').val();
-
-// 	// advance to instructions
-// 	showSlide("instructions");
-// 	}
-// });
-
 // continue to experiment
 $('.slide#instructions button').click(function() { 
 
