@@ -32,7 +32,7 @@
       <h1 id='title-text'>Stanford University Department of Psychology</h1>
       
       <p class="fun-text">Thank you for participating in our study!</p>
-      <p class="subtitle">It should take you about 10-15 minutes to complete.<br>Click the "Start" button to begin.</p>
+      <p class="subtitle">It should take you about 5-8 minutes to complete.<br>Click the "Start" button to begin.</p>
       
       <br />
       <div class="button" id="start">
@@ -84,30 +84,16 @@
 			<div class="progress-bar" role="progressbar" aria-valuenow="" aria-valuemin="0" aria-valuemax="100"></div>
 		</div>
 
-		<div class="header">
-			<table>
-				<colgroup>
-					<col style="width:10%">
-					<col style="width:80%">
-					<col style="width:10%">									
-				</colgroup>
-				<tbody>
-					<tr>
-						<td>
-							<!-- <p id="trialnum"></p> -->
-						</td>
-						<td>
-							<p id="question-wrapper">Do you think this one <span id="question">{{}}</span>??</p>
-						</td>
-						<td>
-							<!-- <p align="right"><button type="end" class="btn btn-default" id="bail" align="right">end</button></p> -->
-						</td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
-
 		<img />
+
+		<div>
+			<p id="question-wrapperA">Do you think this one <span id="question1">{{}}</span>?</p>
+			<p id="question-wrapperB">Do you think this one <span id="question2">{{}}</span>?</p>
+			<p id="question-wrapperB">Do you think this one <span id="question3">{{}}</span>?</p>
+			<p id="question-wrapperB">Do you think this one <span id="question4">{{}}</span>?</p>
+			<p id="question-wrapperB">Do you think this one <span id="question5">{{}}</span>?</p>
+			<p id="question-wrapperB">Do you think this one <span id="question6">{{}}</span>?</p>
+		</div>
 
 		<div class="footer">
 			<table>
@@ -157,6 +143,7 @@
     <!-- my experiment -->
     <script src="helper.js"></script>
     <script src="swatches.js"></script>
+    <script src="conditions.js"></script>
     <script src="experiment.js"></script>
     <script src="preload.js"></script>
     <script src="tracker.js"></script>

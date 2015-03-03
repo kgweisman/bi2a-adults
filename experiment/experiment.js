@@ -2,13 +2,14 @@
 var date = new Date();
 
 // set up condition variable (random assignment)
-var chosenCondition = randomElementNR(["animalCategorization", "propertyInference"]);
+var chosenCondition = randomElementNR(conditions);
 
 // create experiment object
 var experiment = {
 	trials: [],
-	questionTypes: ["do you think this one can think?", "do you think this one has feelings?", "do you think this one can sense things nearby?", "do you think this can feel happy?", "do you think this one can feel hungry?", "do you think this one can feel pain?"],
-	condition: chosenCondition,
+	// questionTypes: ["do you think this one can think?", "do you think this one has feelings?", "do you think this one can sense things nearby?", "do you think this can feel happy?", "do you think this one can feel hungry?", "do you think this one can feel pain?"],
+	condition: chosenCondition.condition,
+	questions: chosenCondition.questions.slice(),
 	trialData: [],
 
 	// what happens after completing all trials
@@ -38,7 +39,7 @@ var experiment = {
 		    	response: "response",
 		    	responseCoded: "responseCoded",
 		    	rt: "rt",
-		    	condition: "condition"
+		    	condition: "condition",
 		    });
 
 		    // convert to csv
@@ -80,11 +81,26 @@ var experiment = {
 			// create place to store data for this trial
 			var data = {
 				phase: "study",
-				question: "do you think this one is an animal?",
 				trialNum: 49 - this.trials.length,
 				swatch: "",
-				response: "",
-				responseCoded: NaN,
+				question1: "",
+				response1: "",
+				responseCoded1: NaN,
+				question2: "",
+				response2: "",
+				responseCoded2: NaN,
+				question3: "",
+				response3: "",
+				responseCoded3: NaN,
+				question4: "",
+				response4: "",
+				responseCoded4: NaN,
+				question5: "",
+				response5: "",
+				responseCoded5: NaN,
+				question6: "",
+				response6: "",
+				responseCoded6: NaN,
 				rt: NaN
 			};
 
@@ -92,6 +108,27 @@ var experiment = {
 			var percentComplete = (data.trialNum-1)/49 * 100;
 			$('#stage .progress-bar').attr("aria-valuenow", percentComplete.toString());
 			$('#stage .progress-bar').css("width", percentComplete.toString()+"%");
+
+			// choose random order of questions
+			var questionsOrder = chosenCondition.questions.slice()
+
+			for (i = 0; i < chosenCondition.questions.length; i++) {
+				// var question = (question+1).toString();
+				data["question"+(i+1)] = randomElementNR(questionsOrder);
+			}
+
+			// display questions
+			if (this.condtion === "animalCategorization") {
+				$('p#question-wrapperB').hide();
+				$('.slide#stage #question1').text(data.question1);
+			} else {
+				$('.slide#stage #question1').text(data.question1);
+				$('.slide#stage #question2').text(data.question2);
+				$('.slide#stage #question3').text(data.question3);
+				$('.slide#stage #question4').text(data.question4);
+				$('.slide#stage #question5').text(data.question5);
+				$('.slide#stage #question6').text(data.question6);
+			}
 
 			// choose random image to display
 			var chosenSwatch = randomElementNR(this.trials);
@@ -137,7 +174,7 @@ $('.slide#instructions button').click(function() {
 
 	// set parameters of this session
 	experiment.trials = swatches.slice();
-	experiment.condition = chosenCondition.slice();
+	experiment.condition = chosenCondition.condition.slice();
 
 	// go to first trial
 	experiment.next();
