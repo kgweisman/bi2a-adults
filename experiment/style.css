@@ -86,7 +86,7 @@ button:focus {
 	outline:0 !important;
 }
 
-.slide#demographics button, .btn, .button {
+.slide#demographics .button {
 	margin: 10px auto 10px auto;
 	text-align: center;
 }
