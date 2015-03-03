@@ -1,4 +1,4 @@
 auth.json
 *_raw.*
-turk/production-results/
-turk/sandbox-results/
+turk/*/production-results/
+turk/*/sandbox-results/
