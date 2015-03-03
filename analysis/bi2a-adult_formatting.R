@@ -4,6 +4,7 @@
 # library(ggplot2)
 # library(lme4)
 # library(jsonlite)
+# library(stats)
 
 # clear environment
 rm(list=ls())
@@ -13,11 +14,12 @@ setwd("/Users//kweisman/Documents/Research (Stanford)/Projects/BI2A/bi2a-adults/
 
 # mike's json for-loop
 files <- dir("production-results/")
+# hackily exclude problematic files
+files2 <- files[-9]
+files3 <- files2[-24]
 d.raw <- data.frame()
 
-for (f in files) {
-  print(f);
-  
+for (f in files3) {
   # gather files
   jf <- paste("production-results/",f,sep="")
   
