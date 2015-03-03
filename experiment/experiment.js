@@ -10,7 +10,7 @@ var experiment = {
 	// questionTypes: ["do you think this one can think?", "do you think this one has feelings?", "do you think this one can sense things nearby?", "do you think this can feel happy?", "do you think this one can feel hungry?", "do you think this one can feel pain?"],
 	allData: {
 		// fingerprinting information
-		// fingerprintData: {},
+		fingerprintData: {},
 
 		// condition and session information
 		condition: chosenCondition.condition,
