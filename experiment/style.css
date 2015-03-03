@@ -137,11 +137,22 @@ img#endingpic {
 	margin: auto;
 }
 
-.controls {
-	/*text-align: right;*/
-	font-size: 12px;
-	width: 260px;
-	margin: auto;
+.question {
+	/*text-align: left;*/
+	font-weight: bold;
+	margin: 10px auto 0px auto;
+}
+
+.radio-group {
+    display: inline-block;
+    text-align: center;
+    font-size: 12px;
+    margin: 8px;
+}
+
+.radio-group label {
+    display: block;
+    font-weight: normal;
 }
 
 input {
