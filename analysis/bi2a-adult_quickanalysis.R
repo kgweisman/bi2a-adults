@@ -191,3 +191,22 @@ swatch_summary %>%
     labs(title = "Mean ratings by picture (sorted): INDIA\n",
          x = "Pictures (sorted by animal rating)")
   ratings_ind
+
+# --- REGRESSIONS -----------------------------------
+
+contrasts(d_tidy$condition) -> contrasts_default
+
+contrasts_orth = cbind(bio.psych = c(4, -3, -3, 4, 4, -3, -3),
+                       animal.hungrpain = c(2, 0, 0, -1, -1, 0, 0),
+                       hungr.pain = c(0, 0, 0, 1, -1, 0, 0),
+                       experien.think = c(0, 1, 1, 0, 0, 1, -3),
+                       affect.sense = c(0, 1, 1, 0, 0, -2, 0),
+                       happy.feel = c(0, -1, 1, 0, 0, 0, 0))
+contrasts(d_tidy$condition) = contrasts_orth
+
+r1 = lmer(responseCoded ~ condition + (1 | worker_id) + (1 | swatch), d_tidy); summary(r1)
+r2 = lmer(responseCoded ~ country + condition + (1 | worker_id) + (1 | swatch), d_tidy); summary(r2)
+r3 = lmer(responseCoded ~ country * condition + (1 | worker_id) + (1 | swatch), d_tidy); summary(r3)
+anova(r3, r2, r1)
+
+
