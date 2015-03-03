@@ -46,7 +46,6 @@ var experiment = {
 
 			// create place to store data for this trial
 			var data = {
-				condition: "",
 				trialNum: 49 - this.trials.length,
 				swatch: "",
 				response: "",

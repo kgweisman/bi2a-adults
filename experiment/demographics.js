@@ -1,7 +1,6 @@
 /* set up demographics slide */
 
 var clickHandler = function(event) {
-	console.log("click handler");
 
 	// record demographic info...
 	experiment.allData.age = $('input#age', '#demographicsForm').val();
@@ -18,11 +17,13 @@ var clickHandler = function(event) {
 };
 
 // set up button behavior
-$('.slide#demographics button').click(function() { 
+$('.slide#demographics button').click(function() {
+	
+	// record data
 	clickHandler();
+
+	// submit to turk (using iframe, i.e., opener) and show finished slide
 	// turk.submit(experiment);
-	// opener.turk.submit(experiment);
-	// window.scrollTo(0, 0);
+	opener.turk.submit(experiment);
 	showSlide("finished");
-	console.log("button selector");
 });
