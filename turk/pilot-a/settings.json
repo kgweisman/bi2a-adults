@@ -1,0 +1,14 @@
+{
+    "title":               "Psychology study on judgments about pictures (6-8 minutes)",
+    "description":         "Participate in a psychology study of 48 very brief questions. This study is similar to a study we're conducting with young children, and we’re interested in seeing what the adult perspective is as a point of comparison.",
+    "keywords":            "research, psychology, survey, science, mind",
+    "url":                 "https://web.stanford.edu/~kweisman/BI2A-adults/bi2a-adults/experiment/preview.html",
+    "frame_height":         420,
+    "assignment_duration":  "1 hour",
+    "auto_approval_delay":  "5 minutes",
+    "reward":               0.60,
+    "qualifications": {
+        "location": "US",
+        "approval_percentage": 95
+    }
+}
