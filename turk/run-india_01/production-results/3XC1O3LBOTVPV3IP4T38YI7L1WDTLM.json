@@ -1,0 +1,447 @@
+{
+    "AutoApprovalTime": "2015-03-03T09:25:23Z",
+    "AssignmentId": "3XC1O3LBOTVPV3IP4T38YI7L1WDTLM",
+    "WorkerId": "ARQMVL81K3VZG",
+    "answers": {
+        "data": {
+            "trials": [],
+            "condition": "pain",
+            "allData": {
+                "education": "college_bachDegree",
+                "englishNative": "yes_multiple",
+                "trialData": [
+                    {
+                        "rt": 20910,
+                        "swatch": "BI2A00012",
+                        "trialNum": 1,
+                        "response": "probably yes",
+                        "responseCoded": 2
+                    },
+                    {
+                        "rt": 18552,
+                        "swatch": "BI2A00017",
+                        "trialNum": 2,
+                        "response": "probably yes",
+                        "responseCoded": 2
+                    },
+                    {
+                        "rt": 7387,
+                        "swatch": "BI2A00014",
+                        "trialNum": 3,
+                        "response": "definitely yes",
+                        "responseCoded": 3
+                    },
+                    {
+                        "rt": 2631,
+                        "swatch": "BI2A00046",
+                        "trialNum": 4,
+                        "response": "probably yes",
+                        "responseCoded": 2
+                    },
+                    {
+                        "rt": 10778,
+                        "swatch": "BI2A00040",
+                        "trialNum": 5,
+                        "response": "maybe yes",
+                        "responseCoded": 1
+                    },
+                    {
+                        "rt": 5766,
+                        "swatch": "BI2A00047",
+                        "trialNum": 6,
+                        "response": "probably yes",
+                        "responseCoded": 2
+                    },
+                    {
+                        "rt": 7306,
+                        "swatch": "BI2A00011",
+                        "trialNum": 7,
+                        "response": "definitely yes",
+                        "responseCoded": 3
+                    },
+                    {
+                        "rt": 4112,
+                        "swatch": "BI2A00006",
+                        "trialNum": 8,
+                        "response": "probably yes",
+                        "responseCoded": 2
+                    },
+                    {
+                        "rt": 3801,
+                        "swatch": "BI2A00007",
+                        "trialNum": 9,
+                        "response": "definitely yes",
+                        "responseCoded": 3
+                    },
+                    {
+                        "rt": 7178,
+                        "swatch": "BI2A00022",
+                        "trialNum": 10,
+                        "response": "probably yes",
+                        "responseCoded": 2
+                    },
+                    {
+                        "rt": 5858,
+                        "swatch": "BI2A00029",
+                        "trialNum": 11,
+                        "response": "probably yes",
+                        "responseCoded": 2
+                    },
+                    {
+                        "rt": 1623,
+                        "swatch": "BI2A00001",
+                        "trialNum": 12,
+                        "response": "definitely yes",
+                        "responseCoded": 3
+                    },
+                    {
+                        "rt": 6956,
+                        "swatch": "BI2A00016",
+                        "trialNum": 13,
+                        "response": "probably yes",
+                        "responseCoded": 2
+                    },
+                    {
+                        "rt": 2621,
+                        "swatch": "BI2A00026",
+                        "trialNum": 14,
+                        "response": "probably yes",
+                        "responseCoded": 2
+                    },
+                    {
+                        "rt": 1485,
+                        "swatch": "BI2A00025",
+                        "trialNum": 15,
+                        "response": "probably yes",
+                        "responseCoded": 2
+                    },
+                    {
+                        "rt": 6298,
+                        "swatch": "BI2A00032",
+                        "trialNum": 16,
+                        "response": "probably yes",
+                        "responseCoded": 2
+                    },
+                    {
+                        "rt": 7017,
+                        "swatch": "BI2A00004",
+                        "trialNum": 17,
+                        "response": "definitely yes",
+                        "responseCoded": 3
+                    },
+                    {
+                        "rt": 6158,
+                        "swatch": "BI2A00044",
+                        "trialNum": 18,
+                        "response": "probably yes",
+                        "responseCoded": 2
+                    },
+                    {
+                        "rt": 2956,
+                        "swatch": "BI2A00030",
+                        "trialNum": 19,
+                        "response": "probably yes",
+                        "responseCoded": 2
+                    },
+                    {
+                        "rt": 51160,
+                        "swatch": "BI2A00003",
+                        "trialNum": 20,
+                        "response": "probably yes",
+                        "responseCoded": 2
+                    },
+                    {
+                        "rt": 2225,
+                        "swatch": "BI2A00035",
+                        "trialNum": 21,
+                        "response": "definitely yes",
+                        "responseCoded": 3
+                    },
+                    {
+                        "rt": 10451,
+                        "swatch": "BI2A00031",
+                        "trialNum": 22,
+                        "response": "maybe yes",
+                        "responseCoded": 1
+                    },
+                    {
+                        "rt": 5290,
+                        "swatch": "BI2A00039",
+                        "trialNum": 23,
+                        "response": "probably yes",
+                        "responseCoded": 2
+                    },
+                    {
+                        "rt": 1525,
+                        "swatch": "BI2A00045",
+                        "trialNum": 24,
+                        "response": "definitely yes",
+                        "responseCoded": 3
+                    },
+                    {
+                        "rt": 2883,
+                        "swatch": "BI2A00008",
+                        "trialNum": 25,
+                        "response": "probably yes",
+                        "responseCoded": 2
+                    },
+                    {
+                        "rt": 4088,
+                        "swatch": "BI2A00037",
+                        "trialNum": 26,
+                        "response": "definitely yes",
+                        "responseCoded": 3
+                    },
+                    {
+                        "rt": 5759,
+                        "swatch": "BI2A00041",
+                        "trialNum": 27,
+                        "response": "probably yes",
+                        "responseCoded": 2
+                    },
+                    {
+                        "rt": 3373,
+                        "swatch": "BI2A00024",
+                        "trialNum": 28,
+                        "response": "definitely yes",
+                        "responseCoded": 3
+                    },
+                    {
+                        "rt": 3747,
+                        "swatch": "BI2A00042",
+                        "trialNum": 29,
+                        "response": "probably yes",
+                        "responseCoded": 2
+                    },
+                    {
+                        "rt": 2343,
+                        "swatch": "BI2A00048",
+                        "trialNum": 30,
+                        "response": "definitely yes",
+                        "responseCoded": 3
+                    },
+                    {
+                        "rt": 2924,
+                        "swatch": "BI2A00033",
+                        "trialNum": 31,
+                        "response": "probably yes",
+                        "responseCoded": 2
+                    },
+                    {
+                        "rt": 4540,
+                        "swatch": "BI2A00036",
+                        "trialNum": 32,
+                        "response": "probably yes",
+                        "responseCoded": 2
+                    },
+                    {
+                        "rt": 14277,
+                        "swatch": "BI2A00015",
+                        "trialNum": 33,
+                        "response": "probably yes",
+                        "responseCoded": 2
+                    },
+                    {
+                        "rt": 29627,
+                        "swatch": "BI2A00020",
+                        "trialNum": 34,
+                        "response": "definitely yes",
+                        "responseCoded": 3
+                    },
+                    {
+                        "rt": 2693,
+                        "swatch": "BI2A00002",
+                        "trialNum": 35,
+                        "response": "probably yes",
+                        "responseCoded": 2
+                    },
+                    {
+                        "rt": 2335,
+                        "swatch": "BI2A00013",
+                        "trialNum": 36,
+                        "response": "probably yes",
+                        "responseCoded": 2
+                    },
+                    {
+                        "rt": 4191,
+                        "swatch": "BI2A00023",
+                        "trialNum": 37,
+                        "response": "definitely yes",
+                        "responseCoded": 3
+                    },
+                    {
+                        "rt": 2885,
+                        "swatch": "BI2A00010",
+                        "trialNum": 38,
+                        "response": "probably yes",
+                        "responseCoded": 2
+                    },
+                    {
+                        "rt": 1845,
+                        "swatch": "BI2A00027",
+                        "trialNum": 39,
+                        "response": "definitely yes",
+                        "responseCoded": 3
+                    },
+                    {
+                        "rt": 2642,
+                        "swatch": "BI2A00034",
+                        "trialNum": 40,
+                        "response": "probably yes",
+                        "responseCoded": 2
+                    },
+                    {
+                        "rt": 2664,
+                        "swatch": "BI2A00038",
+                        "trialNum": 41,
+                        "response": "probably yes",
+                        "responseCoded": 2
+                    },
+                    {
+                        "rt": 1815,
+                        "swatch": "BI2A00021",
+                        "trialNum": 42,
+                        "response": "probably yes",
+                        "responseCoded": 2
+                    },
+                    {
+                        "rt": 2135,
+                        "swatch": "BI2A00043",
+                        "trialNum": 43,
+                        "response": "definitely yes",
+                        "responseCoded": 3
+                    },
+                    {
+                        "rt": 1914,
+                        "swatch": "BI2A00019",
+                        "trialNum": 44,
+                        "response": "probably yes",
+                        "responseCoded": 2
+                    },
+                    {
+                        "rt": 1764,
+                        "swatch": "BI2A00018",
+                        "trialNum": 45,
+                        "response": "probably yes",
+                        "responseCoded": 2
+                    },
+                    {
+                        "rt": 5181,
+                        "swatch": "BI2A00028",
+                        "trialNum": 46,
+                        "response": "probably yes",
+                        "responseCoded": 2
+                    },
+                    {
+                        "rt": 4078,
+                        "swatch": "BI2A00009",
+                        "trialNum": 47,
+                        "response": "probably yes",
+                        "responseCoded": 2
+                    },
+                    {
+                        "rt": 5550,
+                        "swatch": "BI2A00005",
+                        "trialNum": 48,
+                        "response": "definitely yes",
+                        "responseCoded": 3
+                    }
+                ],
+                "gender": "male",
+                "age": "28",
+                "comments": "e time you get ready to write, though, you should have much better sources   that I  can usually skim through the bibliography and note down anything whose title sounds relevant to your research, in material, ideally you'd like the bulk of our references to come from the last 10 years or so.",
+                "religion": [
+                    "christianity_catholic",
+                    "hinduism",
+                    "jainism"
+                ],
+                "condition": "pain",
+                "fingerprintData": {
+                    "ip": "14.96.66.150",
+                    "screenHeight": 900,
+                    "plugins": [
+                        {
+                            "description": "",
+                            "filename": "pdf.dll"
+                        },
+                        {
+                            "description": "The QuickTime Plugin allows you to view a wide variety of multimedia content in Web pages. For more information, visit the <A HREF=http://www.apple.com/quicktime/>QuickTime</A> Web site.",
+                            "filename": "npqtplugin.dll"
+                        },
+                        {
+                            "description": "The QuickTime Plugin allows you to view a wide variety of multimedia content in Web pages. For more information, visit the <A HREF=http://www.apple.com/quicktime/>QuickTime</A> Web site.",
+                            "filename": "npqtplugin2.dll"
+                        },
+                        {
+                            "description": "The QuickTime Plugin allows you to view a wide variety of multimedia content in Web pages. For more information, visit the <A HREF=http://www.apple.com/quicktime/>QuickTime</A> Web site.",
+                            "filename": "npqtplugin3.dll"
+                        },
+                        {
+                            "description": "The QuickTime Plugin allows you to view a wide variety of multimedia content in Web pages. For more information, visit the <A HREF=http://www.apple.com/quicktime/>QuickTime</A> Web site.",
+                            "filename": "npqtplugin4.dll"
+                        },
+                        {
+                            "description": "The QuickTime Plugin allows you to view a wide variety of multimedia content in Web pages. For more information, visit the <A HREF=http://www.apple.com/quicktime/>QuickTime</A> Web site.",
+                            "filename": "npqtplugin5.dll"
+                        },
+                        {
+                            "description": "The QuickTime Plugin allows you to view a wide variety of multimedia content in Web pages. For more information, visit the <A HREF=http://www.apple.com/quicktime/>QuickTime</A> Web site.",
+                            "filename": "npqtplugin6.dll"
+                        },
+                        {
+                            "description": "The QuickTime Plugin allows you to view a wide variety of multimedia content in Web pages. For more information, visit the <A HREF=http://www.apple.com/quicktime/>QuickTime</A> Web site.",
+                            "filename": "npqtplugin7.dll"
+                        },
+                        {
+                            "description": "Adobe PDF Plug-In For Firefox and Netscape 11.0.10",
+                            "filename": "nppdf32.dll"
+                        },
+                        {
+                            "description": "Google Update",
+                            "filename": "npGoogleUpdate3.dll"
+                        },
+                        {
+                            "description": "iTunes Detector Plug-in",
+                            "filename": "npitunes.dll"
+                        },
+                        {
+                            "description": "Inquisit Mozilla Plugin 4.0.8.0",
+                            "filename": "npInquisit.dll"
+                        },
+                        {
+                            "description": "Shockwave Flash 16.0 r0",
+                            "filename": "NPSWF32_16_0_0_305.dll"
+                        }
+                    ],
+                    "timezone": -330,
+                    "colorDepth": 24,
+                    "screenWidth": 1440,
+                    "geo": {
+                        "city": "",
+                        "region_code": "",
+                        "region_name": "",
+                        "ip": "14.96.66.150",
+                        "time_zone": "Asia/Kolkata",
+                        "longitude": 77,
+                        "metro_code": 0,
+                        "latitude": 20,
+                        "country_code": "IN",
+                        "country_name": "India",
+                        "zip_code": ""
+                    },
+                    "browser": "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/40.0.2214.115 Safari/537.36 OPR/27.0.1689.76"
+                },
+                "ethnicity": [
+                    "asian_southAsian",
+                    "black",
+                    "nativeAmerican"
+                ]
+            }
+        }
+    },
+    "AcceptTime": "2015-03-03T09:07:45Z",
+    "HITId": "3T8DUCXY0NFS8HJNPUVH4PK7OP69T8",
+    "Assignment": "",
+    "AssignmentStatus": "Submitted",
+    "SubmitTime": "2015-03-03T09:20:23Z"
+}

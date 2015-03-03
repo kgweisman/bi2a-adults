@@ -1,0 +1,423 @@
+{
+    "AutoApprovalTime": "2015-03-03T08:57:23Z",
+    "AssignmentId": "3B2X28YI3XO7GWL1H36L95J25UOB66",
+    "WorkerId": "A34BY0C3SS3DCI",
+    "answers": {
+        "data": {
+            "trials": [],
+            "condition": "hungry",
+            "allData": {
+                "education": "college_bachDegree",
+                "englishNative": "no",
+                "trialData": [
+                    {
+                        "rt": 12461,
+                        "swatch": "BI2A00039",
+                        "trialNum": 1,
+                        "response": "definitely no",
+                        "responseCoded": 3
+                    },
+                    {
+                        "rt": 3199,
+                        "swatch": "BI2A00041",
+                        "trialNum": 2,
+                        "response": "definitely no",
+                        "responseCoded": 3
+                    },
+                    {
+                        "rt": 2524,
+                        "swatch": "BI2A00030",
+                        "trialNum": 3,
+                        "response": "probably no",
+                        "responseCoded": -2
+                    },
+                    {
+                        "rt": 2028,
+                        "swatch": "BI2A00016",
+                        "trialNum": 4,
+                        "response": "maybe no",
+                        "responseCoded": -1
+                    },
+                    {
+                        "rt": 1396,
+                        "swatch": "BI2A00032",
+                        "trialNum": 5,
+                        "response": "definitely no",
+                        "responseCoded": 3
+                    },
+                    {
+                        "rt": 4084,
+                        "swatch": "BI2A00040",
+                        "trialNum": 6,
+                        "response": "maybe no",
+                        "responseCoded": -1
+                    },
+                    {
+                        "rt": 1900,
+                        "swatch": "BI2A00045",
+                        "trialNum": 7,
+                        "response": "definitely no",
+                        "responseCoded": 3
+                    },
+                    {
+                        "rt": 1596,
+                        "swatch": "BI2A00038",
+                        "trialNum": 8,
+                        "response": "definitely no",
+                        "responseCoded": 3
+                    },
+                    {
+                        "rt": 3052,
+                        "swatch": "BI2A00011",
+                        "trialNum": 9,
+                        "response": "definitely yes",
+                        "responseCoded": 3
+                    },
+                    {
+                        "rt": 2029,
+                        "swatch": "BI2A00015",
+                        "trialNum": 10,
+                        "response": "definitely yes",
+                        "responseCoded": 3
+                    },
+                    {
+                        "rt": 1517,
+                        "swatch": "BI2A00005",
+                        "trialNum": 11,
+                        "response": "definitely yes",
+                        "responseCoded": 3
+                    },
+                    {
+                        "rt": 1260,
+                        "swatch": "BI2A00020",
+                        "trialNum": 12,
+                        "response": "definitely yes",
+                        "responseCoded": 3
+                    },
+                    {
+                        "rt": 1740,
+                        "swatch": "BI2A00022",
+                        "trialNum": 13,
+                        "response": "probably yes",
+                        "responseCoded": 2
+                    },
+                    {
+                        "rt": 2202,
+                        "swatch": "BI2A00043",
+                        "trialNum": 14,
+                        "response": "equally yes/no",
+                        "responseCoded": 0
+                    },
+                    {
+                        "rt": 1588,
+                        "swatch": "BI2A00035",
+                        "trialNum": 15,
+                        "response": "definitely no",
+                        "responseCoded": 3
+                    },
+                    {
+                        "rt": 1532,
+                        "swatch": "BI2A00010",
+                        "trialNum": 16,
+                        "response": "probably yes",
+                        "responseCoded": 2
+                    },
+                    {
+                        "rt": 2644,
+                        "swatch": "BI2A00034",
+                        "trialNum": 17,
+                        "response": "equally yes/no",
+                        "responseCoded": 0
+                    },
+                    {
+                        "rt": 2157,
+                        "swatch": "BI2A00003",
+                        "trialNum": 18,
+                        "response": "probably yes",
+                        "responseCoded": 2
+                    },
+                    {
+                        "rt": 1821,
+                        "swatch": "BI2A00033",
+                        "trialNum": 19,
+                        "response": "probably no",
+                        "responseCoded": -2
+                    },
+                    {
+                        "rt": 1364,
+                        "swatch": "BI2A00026",
+                        "trialNum": 20,
+                        "response": "maybe yes",
+                        "responseCoded": 1
+                    },
+                    {
+                        "rt": 1357,
+                        "swatch": "BI2A00046",
+                        "trialNum": 21,
+                        "response": "definitely no",
+                        "responseCoded": 3
+                    },
+                    {
+                        "rt": 1907,
+                        "swatch": "BI2A00012",
+                        "trialNum": 22,
+                        "response": "maybe yes",
+                        "responseCoded": 1
+                    },
+                    {
+                        "rt": 1196,
+                        "swatch": "BI2A00031",
+                        "trialNum": 23,
+                        "response": "definitely no",
+                        "responseCoded": 3
+                    },
+                    {
+                        "rt": 1700,
+                        "swatch": "BI2A00021",
+                        "trialNum": 24,
+                        "response": "definitely no",
+                        "responseCoded": 3
+                    },
+                    {
+                        "rt": 1428,
+                        "swatch": "BI2A00004",
+                        "trialNum": 25,
+                        "response": "definitely yes",
+                        "responseCoded": 3
+                    },
+                    {
+                        "rt": 1740,
+                        "swatch": "BI2A00008",
+                        "trialNum": 26,
+                        "response": "definitely yes",
+                        "responseCoded": 3
+                    },
+                    {
+                        "rt": 1261,
+                        "swatch": "BI2A00001",
+                        "trialNum": 27,
+                        "response": "probably yes",
+                        "responseCoded": 2
+                    },
+                    {
+                        "rt": 1220,
+                        "swatch": "BI2A00036",
+                        "trialNum": 28,
+                        "response": "maybe no",
+                        "responseCoded": -1
+                    },
+                    {
+                        "rt": 2900,
+                        "swatch": "BI2A00018",
+                        "trialNum": 29,
+                        "response": "equally yes/no",
+                        "responseCoded": 0
+                    },
+                    {
+                        "rt": 2445,
+                        "swatch": "BI2A00024",
+                        "trialNum": 30,
+                        "response": "probably yes",
+                        "responseCoded": 2
+                    },
+                    {
+                        "rt": 1341,
+                        "swatch": "BI2A00028",
+                        "trialNum": 31,
+                        "response": "probably yes",
+                        "responseCoded": 2
+                    },
+                    {
+                        "rt": 1741,
+                        "swatch": "BI2A00025",
+                        "trialNum": 32,
+                        "response": "equally yes/no",
+                        "responseCoded": 0
+                    },
+                    {
+                        "rt": 1261,
+                        "swatch": "BI2A00044",
+                        "trialNum": 33,
+                        "response": "definitely no",
+                        "responseCoded": 3
+                    },
+                    {
+                        "rt": 1769,
+                        "swatch": "BI2A00017",
+                        "trialNum": 34,
+                        "response": "probably no",
+                        "responseCoded": -2
+                    },
+                    {
+                        "rt": 1308,
+                        "swatch": "BI2A00048",
+                        "trialNum": 35,
+                        "response": "definitely no",
+                        "responseCoded": 3
+                    },
+                    {
+                        "rt": 1506,
+                        "swatch": "BI2A00013",
+                        "trialNum": 36,
+                        "response": "probably yes",
+                        "responseCoded": 2
+                    },
+                    {
+                        "rt": 1286,
+                        "swatch": "BI2A00002",
+                        "trialNum": 37,
+                        "response": "definitely yes",
+                        "responseCoded": 3
+                    },
+                    {
+                        "rt": 1268,
+                        "swatch": "BI2A00006",
+                        "trialNum": 38,
+                        "response": "definitely yes",
+                        "responseCoded": 3
+                    },
+                    {
+                        "rt": 1173,
+                        "swatch": "BI2A00047",
+                        "trialNum": 39,
+                        "response": "definitely no",
+                        "responseCoded": 3
+                    },
+                    {
+                        "rt": 1100,
+                        "swatch": "BI2A00019",
+                        "trialNum": 40,
+                        "response": "probably yes",
+                        "responseCoded": 2
+                    },
+                    {
+                        "rt": 1212,
+                        "swatch": "BI2A00007",
+                        "trialNum": 41,
+                        "response": "probably yes",
+                        "responseCoded": 2
+                    },
+                    {
+                        "rt": 1839,
+                        "swatch": "BI2A00023",
+                        "trialNum": 42,
+                        "response": "equally yes/no",
+                        "responseCoded": 0
+                    },
+                    {
+                        "rt": 2700,
+                        "swatch": "BI2A00042",
+                        "trialNum": 43,
+                        "response": "probably no",
+                        "responseCoded": -2
+                    },
+                    {
+                        "rt": 3539,
+                        "swatch": "BI2A00029",
+                        "trialNum": 44,
+                        "response": "equally yes/no",
+                        "responseCoded": 0
+                    },
+                    {
+                        "rt": 1389,
+                        "swatch": "BI2A00027",
+                        "trialNum": 45,
+                        "response": "definitely no",
+                        "responseCoded": 3
+                    },
+                    {
+                        "rt": 2445,
+                        "swatch": "BI2A00037",
+                        "trialNum": 46,
+                        "response": "maybe no",
+                        "responseCoded": -1
+                    },
+                    {
+                        "rt": 1902,
+                        "swatch": "BI2A00009",
+                        "trialNum": 47,
+                        "response": "maybe yes",
+                        "responseCoded": 1
+                    },
+                    {
+                        "rt": 1869,
+                        "swatch": "BI2A00014",
+                        "trialNum": 48,
+                        "response": "maybe yes",
+                        "responseCoded": 1
+                    }
+                ],
+                "gender": "male",
+                "age": "23",
+                "comments": "",
+                "religion": [
+                    "hinduism"
+                ],
+                "condition": "hungry",
+                "fingerprintData": {
+                    "ip": "49.207.52.179",
+                    "screenHeight": 768,
+                    "plugins": [
+                        {
+                            "description": "Enables Widevine licenses for playback of HTML audio/video content. (version: 1.4.6.758)",
+                            "filename": "widevinecdmadapter.dll"
+                        },
+                        {
+                            "description": "Shockwave Flash 16.0 r0",
+                            "filename": "pepflashplayer.dll"
+                        },
+                        {
+                            "description": "This plugin allows you to securely access other computers that have been shared with you. To use this plugin you must first install the <a href=\"https://chrome.google.com/remotedesktop\">Chrome Remote Desktop</a> webapp.",
+                            "filename": "internal-remoting-viewer"
+                        },
+                        {
+                            "description": "",
+                            "filename": "internal-nacl-plugin"
+                        },
+                        {
+                            "description": "",
+                            "filename": "pdf.dll"
+                        },
+                        {
+                            "description": "NPRuntime Script Plug-in Library for Java(TM) Deploy",
+                            "filename": "npDeployJava1.dll"
+                        },
+                        {
+                            "description": "Next Generation Java Plug-in 11.31.2 for Mozilla browsers",
+                            "filename": "npjp2.dll"
+                        },
+                        {
+                            "description": "VLC media player Web Plugin 2.1.3",
+                            "filename": "npvlc.dll"
+                        }
+                    ],
+                    "timezone": -330,
+                    "colorDepth": 24,
+                    "screenWidth": 1360,
+                    "geo": {
+                        "city": "",
+                        "region_code": "",
+                        "region_name": "",
+                        "ip": "49.207.52.179",
+                        "time_zone": "Asia/Kolkata",
+                        "longitude": 77,
+                        "metro_code": 0,
+                        "latitude": 20,
+                        "country_code": "IN",
+                        "country_name": "India",
+                        "zip_code": ""
+                    },
+                    "browser": "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/40.0.2214.115 Safari/537.36"
+                },
+                "ethnicity": [
+                    "asian_southAsian"
+                ]
+            }
+        }
+    },
+    "AcceptTime": "2015-03-03T08:46:40Z",
+    "HITId": "3T8DUCXY0NFS8HJNPUVH4PK7OP69T8",
+    "Assignment": "",
+    "AssignmentStatus": "Submitted",
+    "SubmitTime": "2015-03-03T08:52:23Z"
+}
