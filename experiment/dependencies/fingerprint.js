@@ -35,4 +35,4 @@ function setGeo(data) {
 })()
 
 // export fingerprint data to experiment object
-experiment.newData.fingerprintData = fingerprint;
+experiment.allData.fingerprintData = fingerprint;
