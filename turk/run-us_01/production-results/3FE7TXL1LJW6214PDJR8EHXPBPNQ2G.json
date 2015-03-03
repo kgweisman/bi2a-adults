@@ -1,0 +1,370 @@
+{
+    "ApprovalTime": "2015-03-03T10:57:36Z",
+    "AutoApprovalTime": "2015-03-03T10:53:44Z",
+    "AssignmentId": "3FE7TXL1LJW6214PDJR8EHXPBPNQ2G",
+    "WorkerId": "A2J9RNKXNLRKVC",
+    "answers": {
+        "data": {
+            "trials": [],
+            "condition": "happy",
+            "allData": {
+                "education": "hs_diploma",
+                "englishNative": "yes_only",
+                "trialData": [
+                    {
+                        "rt": 6161,
+                        "swatch": "BI2A00033",
+                        "trialNum": 1,
+                        "response": "maybe no",
+                        "responseCoded": -1
+                    },
+                    {
+                        "rt": 5584,
+                        "swatch": "BI2A00026",
+                        "trialNum": 2,
+                        "response": "maybe yes",
+                        "responseCoded": 1
+                    },
+                    {
+                        "rt": 3106,
+                        "swatch": "BI2A00047",
+                        "trialNum": 3,
+                        "response": "maybe no",
+                        "responseCoded": -1
+                    },
+                    {
+                        "rt": 1822,
+                        "swatch": "BI2A00015",
+                        "trialNum": 4,
+                        "response": "maybe no",
+                        "responseCoded": -1
+                    },
+                    {
+                        "rt": 2295,
+                        "swatch": "BI2A00002",
+                        "trialNum": 5,
+                        "response": "maybe yes",
+                        "responseCoded": 1
+                    },
+                    {
+                        "rt": 5717,
+                        "swatch": "BI2A00029",
+                        "trialNum": 6,
+                        "response": "maybe yes",
+                        "responseCoded": 1
+                    },
+                    {
+                        "rt": 8496,
+                        "swatch": "BI2A00011",
+                        "trialNum": 7,
+                        "response": "maybe yes",
+                        "responseCoded": 1
+                    },
+                    {
+                        "rt": 5496,
+                        "swatch": "BI2A00020",
+                        "trialNum": 8,
+                        "response": "probably yes",
+                        "responseCoded": 2
+                    },
+                    {
+                        "rt": 6235,
+                        "swatch": "BI2A00010",
+                        "trialNum": 9,
+                        "response": "maybe no",
+                        "responseCoded": -1
+                    },
+                    {
+                        "rt": 6186,
+                        "swatch": "BI2A00035",
+                        "trialNum": 10,
+                        "response": "definitely no",
+                        "responseCoded": 3
+                    },
+                    {
+                        "rt": 4578,
+                        "swatch": "BI2A00022",
+                        "trialNum": 11,
+                        "response": "probably no",
+                        "responseCoded": -2
+                    },
+                    {
+                        "rt": 5784,
+                        "swatch": "BI2A00025",
+                        "trialNum": 12,
+                        "response": "maybe no",
+                        "responseCoded": -1
+                    },
+                    {
+                        "rt": 3485,
+                        "swatch": "BI2A00037",
+                        "trialNum": 13,
+                        "response": "definitely no",
+                        "responseCoded": 3
+                    },
+                    {
+                        "rt": 3221,
+                        "swatch": "BI2A00017",
+                        "trialNum": 14,
+                        "response": "definitely no",
+                        "responseCoded": 3
+                    },
+                    {
+                        "rt": 5880,
+                        "swatch": "BI2A00007",
+                        "trialNum": 15,
+                        "response": "maybe yes",
+                        "responseCoded": 1
+                    },
+                    {
+                        "rt": 4169,
+                        "swatch": "BI2A00016",
+                        "trialNum": 16,
+                        "response": "maybe no",
+                        "responseCoded": -1
+                    },
+                    {
+                        "rt": 2961,
+                        "swatch": "BI2A00044",
+                        "trialNum": 17,
+                        "response": "definitely no",
+                        "responseCoded": 3
+                    },
+                    {
+                        "rt": 4023,
+                        "swatch": "BI2A00040",
+                        "trialNum": 18,
+                        "response": "definitely no",
+                        "responseCoded": 3
+                    },
+                    {
+                        "rt": 4352,
+                        "swatch": "BI2A00024",
+                        "trialNum": 19,
+                        "response": "probably yes",
+                        "responseCoded": 2
+                    },
+                    {
+                        "rt": 2736,
+                        "swatch": "BI2A00048",
+                        "trialNum": 20,
+                        "response": "definitely no",
+                        "responseCoded": 3
+                    },
+                    {
+                        "rt": 3328,
+                        "swatch": "BI2A00038",
+                        "trialNum": 21,
+                        "response": "definitely no",
+                        "responseCoded": 3
+                    },
+                    {
+                        "rt": 3073,
+                        "swatch": "BI2A00003",
+                        "trialNum": 22,
+                        "response": "definitely yes",
+                        "responseCoded": 3
+                    },
+                    {
+                        "rt": 3983,
+                        "swatch": "BI2A00023",
+                        "trialNum": 23,
+                        "response": "probably no",
+                        "responseCoded": -2
+                    },
+                    {
+                        "rt": 3824,
+                        "swatch": "BI2A00019",
+                        "trialNum": 24,
+                        "response": "probably yes",
+                        "responseCoded": 2
+                    },
+                    {
+                        "rt": 3936,
+                        "swatch": "BI2A00008",
+                        "trialNum": 25,
+                        "response": "probably yes",
+                        "responseCoded": 2
+                    },
+                    {
+                        "rt": 3077,
+                        "swatch": "BI2A00032",
+                        "trialNum": 26,
+                        "response": "probably no",
+                        "responseCoded": -2
+                    },
+                    {
+                        "rt": 3928,
+                        "swatch": "BI2A00028",
+                        "trialNum": 27,
+                        "response": "definitely no",
+                        "responseCoded": 3
+                    },
+                    {
+                        "rt": 5355,
+                        "swatch": "BI2A00009",
+                        "trialNum": 28,
+                        "response": "maybe no",
+                        "responseCoded": -1
+                    },
+                    {
+                        "rt": 5432,
+                        "swatch": "BI2A00012",
+                        "trialNum": 29,
+                        "response": "maybe no",
+                        "responseCoded": -1
+                    },
+                    {
+                        "rt": 3507,
+                        "swatch": "BI2A00034",
+                        "trialNum": 30,
+                        "response": "probably no",
+                        "responseCoded": -2
+                    },
+                    {
+                        "rt": 2711,
+                        "swatch": "BI2A00046",
+                        "trialNum": 31,
+                        "response": "definitely no",
+                        "responseCoded": 3
+                    },
+                    {
+                        "rt": 2823,
+                        "swatch": "BI2A00030",
+                        "trialNum": 32,
+                        "response": "definitely no",
+                        "responseCoded": 3
+                    },
+                    {
+                        "rt": 2696,
+                        "swatch": "BI2A00036",
+                        "trialNum": 33,
+                        "response": "probably no",
+                        "responseCoded": -2
+                    },
+                    {
+                        "rt": 2827,
+                        "swatch": "BI2A00014",
+                        "trialNum": 34,
+                        "response": "probably no",
+                        "responseCoded": -2
+                    },
+                    {
+                        "rt": 3361,
+                        "swatch": "BI2A00041",
+                        "trialNum": 35,
+                        "response": "definitely no",
+                        "responseCoded": 3
+                    },
+                    {
+                        "rt": 3179,
+                        "swatch": "BI2A00043",
+                        "trialNum": 36,
+                        "response": "definitely no",
+                        "responseCoded": 3
+                    },
+                    {
+                        "rt": 4002,
+                        "swatch": "BI2A00005",
+                        "trialNum": 37,
+                        "response": "definitely yes",
+                        "responseCoded": 3
+                    },
+                    {
+                        "rt": 2945,
+                        "swatch": "BI2A00031",
+                        "trialNum": 38,
+                        "response": "definitely no",
+                        "responseCoded": 3
+                    },
+                    {
+                        "rt": 3403,
+                        "swatch": "BI2A00021",
+                        "trialNum": 39,
+                        "response": "definitely no",
+                        "responseCoded": 3
+                    },
+                    {
+                        "rt": 3314,
+                        "swatch": "BI2A00001",
+                        "trialNum": 40,
+                        "response": "maybe yes",
+                        "responseCoded": 1
+                    },
+                    {
+                        "rt": 3153,
+                        "swatch": "BI2A00013",
+                        "trialNum": 41,
+                        "response": "maybe yes",
+                        "responseCoded": 1
+                    },
+                    {
+                        "rt": 2958,
+                        "swatch": "BI2A00027",
+                        "trialNum": 42,
+                        "response": "definitely no",
+                        "responseCoded": 3
+                    },
+                    {
+                        "rt": 2957,
+                        "swatch": "BI2A00042",
+                        "trialNum": 43,
+                        "response": "definitely no",
+                        "responseCoded": 3
+                    },
+                    {
+                        "rt": 3007,
+                        "swatch": "BI2A00006",
+                        "trialNum": 44,
+                        "response": "probably yes",
+                        "responseCoded": 2
+                    },
+                    {
+                        "rt": 2801,
+                        "swatch": "BI2A00045",
+                        "trialNum": 45,
+                        "response": "definitely no",
+                        "responseCoded": 3
+                    },
+                    {
+                        "rt": 2944,
+                        "swatch": "BI2A00039",
+                        "trialNum": 46,
+                        "response": "definitely no",
+                        "responseCoded": 3
+                    },
+                    {
+                        "rt": 3264,
+                        "swatch": "BI2A00004",
+                        "trialNum": 47,
+                        "response": "probably yes",
+                        "responseCoded": 2
+                    },
+                    {
+                        "rt": 2616,
+                        "swatch": "BI2A00018",
+                        "trialNum": 48,
+                        "response": "definitely no",
+                        "responseCoded": 3
+                    }
+                ],
+                "gender": "male",
+                "age": "34",
+                "comments": "",
+                "religion": [
+                    "christianity_other"
+                ],
+                "condition": "happy",
+                "fingerprintData": {},
+                "ethnicity": [
+                    "white"
+                ]
+            }
+        }
+    },
+    "AcceptTime": "2015-03-03T10:41:51Z",
+    "HITId": "39TX062QX1XDAW3RDVV42F2R1TJX3X",
+    "Assignment": "",
+    "AssignmentStatus": "Approved",
+    "SubmitTime": "2015-03-03T10:48:44Z"
+}

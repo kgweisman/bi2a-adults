@@ -7,53 +7,70 @@
 # library(stats)
 
 # clear environment
-rm(list=ls())
+# rm(list=ls())
 
 # set working directory
-setwd("/Users//kweisman/Documents/Research (Stanford)/Projects/BI2A/bi2a-adults/turk/run-india_01/")
+# ... for india
+# setwd("/Users//kweisman/Documents/Research (Stanford)/Projects/BI2A/bi2a-adults/turk/run-india_01/")
+
+# ... for us
+# setwd("/Users//kweisman/Documents/Research (Stanford)/Projects/BI2A/bi2a-adults/turk/run-us_01/")
+
 
 # mike's json for-loop
-files <- dir("production-results/")
+# files <- dir("production-results/")
 # hackily exclude problematic files
-files2 <- files[-9]
-files3 <- files2[-24]
-d.raw <- data.frame()
+# ... for india:
+# files2 <- files[-9]
+# files3 <- files2[-24]
 
-for (f in files3) {
-  # gather files
-  jf <- paste("production-results/",f,sep="")
-  
-  # parse JSON object
-  jd <- fromJSON(paste(readLines(jf), collapse=""))
-
-  # store relevant variables in dataframe 
-  id <- data.frame(
-    # subject-level data: identity
-#     country = jd$answers$data$allData$fingerprintData$geo$country_name,
-    condition = jd$answers$data$allData$condition,
-    worker_id = jd$WorkerId,
-    ip_address = jd$answers$data$allData$fingerprintData$ip,
-    
-    # subject-level data: demographics
-    education = jd$answers$data$allData$education,
-    english_native = jd$answers$data$allData$englishNative,
-    gender = jd$answers$data$allData$gender,
-    age = jd$answers$data$allData$age,
-    religion = jd$answers$data$allData$religion,
-    comments = jd$answers$data$allData$comments,
-                   
-    # trial-level data:                    
-    trialNum = jd$answers$data$allData$trialData$trialNum,
-    swatch = jd$answers$data$allData$trialData$swatch,
-    response = jd$answers$data$allData$trialData$response,
-    responseCoded = jd$answers$data$allData$trialData$responseCoded,
-    rt = jd$answers$data$allData$trialData$rt)
-  
-  # bind into same dataframe
-  d.raw <- bind_rows(d.raw, id)
-}
-
-glimpse(d.raw)
+# # ... for us:
+# files2 <- files[-47]
+# files3 <- files2[-45]
+# files4 <- files3[-40]
+# files5 <- files4[-35]
+# files6 <- files5[-24]
+# files7 <- files6[-21]
+# files8 <- files7[-19]
+# files9 <- files8[-8]
+# files10 <- files9[-2]
+# d.raw <- data.frame()
+# 
+# for (f in files10) {
+#   # gather files
+#   jf <- paste("production-results/",f,sep="")
+#   
+#   # parse JSON object
+#   jd <- fromJSON(paste(readLines(jf), collapse=""))
+# 
+#   # store relevant variables in dataframe 
+#   id <- data.frame(
+#     # subject-level data: identity
+# #     country = jd$answers$data$allData$fingerprintData$geo$country_name,
+#     condition = jd$answers$data$allData$condition,
+#     worker_id = jd$WorkerId,
+#     ip_address = jd$answers$data$allData$fingerprintData$ip,
+#     
+#     # subject-level data: demographics
+#     education = jd$answers$data$allData$education,
+#     english_native = jd$answers$data$allData$englishNative,
+#     gender = jd$answers$data$allData$gender,
+#     age = jd$answers$data$allData$age,
+#     religion = jd$answers$data$allData$religion,
+#     comments = jd$answers$data$allData$comments,
+#                    
+#     # trial-level data:                    
+#     trialNum = jd$answers$data$allData$trialData$trialNum,
+#     swatch = jd$answers$data$allData$trialData$swatch,
+#     response = jd$answers$data$allData$trialData$response,
+#     responseCoded = jd$answers$data$allData$trialData$responseCoded,
+#     rt = jd$answers$data$allData$trialData$rt)
+#   
+#   # bind into same dataframe
+#   d.raw <- bind_rows(d.raw, id)
+# }
+# 
+# glimpse(d.raw)
 
 # clean up variables
 d_tidy = d.raw %>%
