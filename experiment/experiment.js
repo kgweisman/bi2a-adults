@@ -31,14 +31,12 @@ var experiment = {
 
 		    // add headers in a hacky way
 		    objArray.unshift({
-		    	phase: "phase",
-		    	question: "question",
-		    	trialNum: "trialNum",
-		    	swatch: "swatch",
-		    	response: "response",
-		    	responseCoded: "responseCoded",
-		    	rt: "rt",
-		    	condition: "condition",
+				condition: "condition",
+				trialNum: "trialNum",
+				swatch: "swatch",
+				response: "response",
+				responseCoded: "responseCoded",
+				rt: "rt"
 		    });
 
 		    // convert to csv
@@ -79,16 +77,14 @@ var experiment = {
 
 			// create place to store data for this trial
 			var data = {
-				phase: "study",
+				condition: "",
 				trialNum: 49 - this.trials.length,
 				swatch: "",
-				question: "",
 				response: "",
 				responseCoded: NaN,
 				rt: NaN
 			};
 
-			// display progress bar
 			// display progress bar
 			var percentComplete = (data.trialNum-1)/49 * 100;
 			var percentCompleteRounded = Math.round(percentComplete);
@@ -96,9 +92,8 @@ var experiment = {
 			$('#stage .progress-bar').attr("aria-valuenow", percentComplete.toString());
 			$('#stage .progress-bar').css("width", percentComplete.toString()+"%");
 
-			// record and display question
-			data.question = chosenCondition.question;
-			$('.slide#stage span#question-text').text(data.question);
+			// display question
+			$('.slide#stage span#question-text').text(chosenCondition.question);
 
 			// choose random image to display
 			var chosenSwatch = randomElementNR(this.trials);
