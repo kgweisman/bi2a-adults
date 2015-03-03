@@ -8,7 +8,6 @@ var chosenCondition = randomElementNR(["animalCategorization", "propertyInferenc
 // create experiment object
 var experiment = {
 	trials: [],
-	// bonusTrials: [],
 	practiceTrials: [],
 	questionTypes: ["do you think this one can think?", "do you think this one has feelings?", "do you think this one can sense things nearby?", "do you think this can feel happy?", "do you think this one can feel hungry?", "do you think this one can feel pain?"],
 	condition: chosenCondition,
@@ -75,95 +74,6 @@ var experiment = {
 		}
 		DownloadJSON2CSV(data);
 	},
-
-	// // what happens when participant plays bonus rounds
-	// bonus: function() {
-
-	// 	// set up how to play a bonus trial
-	// 	function playBonus() {
-
-	// 		// create place to store data for this bonus trial
-	// 		var data = {
-	// 			phase: "bonus",
-	// 			question: "",
-	// 			trialNum: 19 - experiment.bonusTrials.length,
-	// 			swatch: "",
-	// 			response: "",
-	// 			responseCoded: "",
-	// 			rt: NaN
-	// 		}
-
-	// 		// display progress bar
-	// 		var percentComplete = (data.trialNum-13)/6 * 100;
-	// 		$('#stage .progress-bar').attr("aria-valuenow", percentComplete.toString());
-	// 		$('#stage .progress-bar').css("width", percentComplete.toString()+"%");
-
-	// 		// restyle progress bar
-	// 		$('#stage .progress').css("background-color", "rgba(170, 120, 240, .1)");
-	// 		$('#stage .progress-bar').css("background-color", "rgba(170, 120, 240, 1)");
-
-	// 		// choose random image to display
-	// 		var chosenSwatch = randomElementNR(experiment.bonusTrials);
-	// 		data.swatch = chosenSwatch.swatchName;
-
-	// 		// display chosen image
-	// 		$('.slide#stage img').attr("src", chosenSwatch.imageSource);
-
-	// 		// display randomly selected question
-	// 		var chosenQuestion = randomElementNR(experiment.questionTypes);
-	// 		data.question = chosenQuestion.slice();
-	// 		$('.slide#stage #question').text(chosenQuestion);
-
-	// 		// show trial
-	// 		showSlide("stage");
-
-	// 		// record response and rt
-	// 		var startTime = (new Date()).getTime();
-
-	// 		var clickHandler = function(event) {
-	// 			var endTime = (new Date()).getTime();
-	// 			data.rt = endTime - startTime;
-	// 			experiment.trialData.push(data);
-	// 		};
-
-	// 		$('.slide#stage button[type="submit"]').click(function() {
-	// 			// record response
-	// 			data.response = $(this).attr('id');
-	// 			data.responseCoded = parseFloat($(this).attr('value'));
-
-	// 			// end trial
-	// 			clickHandler();
-	// 			$('.slide#stage button[type="submit"]').unbind().blur();
-	// 			window.scrollTo(0, 0);
-	// 			experiment.next();
-	// 		});
-	// 	};
-
-	// 	if (experiment.bonusTrials.length === 0) {
-
-	// 		// end study session
-	// 		experiment.end();
-
-	// 	} else if (experiment.bonusTrials.length === 6) {
-
-	// 		$(".slide").hide();
-
-	// 		// give option of bonus round
-	// 		var chooseBonus = window.confirm("Do you want to play a bonus round?");
-	// 		if (chooseBonus === true) {
-	// 			// if child says yes...
-	// 			playBonus();
-
-	// 		} else {
-	// 		// if child says no...
-
-	// 		experiment.end();
-	// 		}			
-
-	// 	} else {
-	// 		playBonus();
-	// 	}
-	// },
 
 	// what happens when participant does practice trials
 	practice: function() {
@@ -301,18 +211,11 @@ $('.slide#instructions button').click(function() {
 	// set parameters of this session
 	experiment.practiceTrials = swatchSetPractice.slice();
 	experiment.trials = swatches.slice();
-	// experiment.bonusTrials = [swatches[0], swatches[1], swatches[5], swatches[6], swatches[10], swatches[11]];
 	experiment.condition = chosenCondition.slice();
 
 	// go to practice trial
 	experiment.practice();
 });
-
-// // bail out if needed
-// $('.slide#stage button[type="end"]').click(function() { 
-// 	// go to end
-// 	experiment.end();
-// });
 
 // start!
 showSlide("preload");
