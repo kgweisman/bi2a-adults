@@ -17,11 +17,6 @@ var experiment = {
 		// show ending slide	
 		showSlide("finished");
 		
-		$('.slide#finished button').click(function() { 
-			// reload html to return to start slide
-			location.reload();
-		});
-
 		// export data to csv
 		var data = experiment.trialData;
  
