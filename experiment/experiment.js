@@ -89,7 +89,10 @@ var experiment = {
 			};
 
 			// display progress bar
+			// display progress bar
 			var percentComplete = (data.trialNum-1)/49 * 100;
+			var percentCompleteRounded = Math.round(percentComplete);
+			$('#stage .progress-text').text("trial "+data.trialNum.toString()+" of 48: "+percentCompleteRounded+"% complete");
 			$('#stage .progress-bar').attr("aria-valuenow", percentComplete.toString());
 			$('#stage .progress-bar').css("width", percentComplete.toString()+"%");
 
