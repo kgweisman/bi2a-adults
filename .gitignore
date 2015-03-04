@@ -2,3 +2,5 @@ auth.json
 *_raw.*
 turk/*/production-results/
 turk/*/sandbox-results/
+.RData
+.Rhistory
