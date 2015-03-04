@@ -173,9 +173,9 @@ swatch_summary %>%
     labs(title = "Histogram of sds of animal ratings\nacross pictures\n")
 
 # look at all ratings sorted by animal ratings
-  # ... us
+  # ... us (sorted by us rating)
   ratings_us = animal_ratings %>% filter(country == "us") %>%
-    ggplot(aes(x = reorder(swatch, animal), y = mean, fill = condition)) +
+    ggplot(aes(x = reorder(swatch, animal_rating_us), y = mean, fill = condition)) +
     facet_wrap(~ condition, ncol = 2) +
     geom_bar(stat = "identity", position = "identity", width = 0.5) +
   #   geom_errorbar(aes(ymin = mean - 2*sd/sqrt(n),
@@ -189,12 +189,12 @@ swatch_summary %>%
 #           axis.text.x = element_text(angle = 60,
 #                                      hjust = 1)) +
     scale_fill_brewer(palette = "Set2") +
-    labs(title = "Mean ratings by picture (sorted): US\n",
-         x = "Pictures (sorted by animal rating)")
+    labs(title = "Mean ratings by picture (sorted by US animal rating): US\n",
+         x = "Pictures (sorted by US animal rating)")
   ratings_us
-  # ... india
-  ratings_ind = animal_ratings %>% filter(country == "india") %>%
-    ggplot(aes(x = reorder(swatch, animal), y = mean, fill = condition)) +
+  # ... india (sorted by indian rating)
+  ratings_ind1 = animal_ratings %>% filter(country == "india") %>%
+    ggplot(aes(x = reorder(swatch, animal_rating_ind), y = mean, fill = condition)) +
     facet_wrap(~ condition, ncol = 2) +
     geom_bar(stat = "identity", position = "identity", width = 0.5) +
     #   geom_errorbar(aes(ymin = mean - 2*sd/sqrt(n),
@@ -208,12 +208,34 @@ swatch_summary %>%
 #             axis.text.x = element_text(angle = 60,
 #                                        hjust = 1)) +
     scale_fill_brewer(palette = "Set2") +
-    labs(title = "Mean ratings by picture (sorted): INDIA\n",
-         x = "Pictures (sorted by animal rating)")
-  ratings_ind
+    labs(title = "Mean ratings by picture (sorted by Indian animal rating): INDIA\n",
+         x = "Pictures (sorted by Indian animal rating)")
+  ratings_ind1
+  # ... india (sorted by us rating)
+  ratings_ind2 = animal_ratings %>% filter(country == "india") %>%
+    ggplot(aes(x = reorder(swatch, animal_rating_us), y = mean, fill = condition)) +
+    facet_wrap(~ condition, ncol = 2) +
+    geom_bar(stat = "identity", position = "identity", width = 0.5) +
+    #   geom_errorbar(aes(ymin = mean - 2*sd/sqrt(n),
+    #                     ymax = mean + 2*sd/sqrt(n),
+    #                     width = 0.1)) +
+    coord_cartesian(ylim = c(-3, 3)) +
+    theme_bw() +
+    theme(text = element_text(size = 20),
+          legend.position = "none",
+          axis.text.x = element_blank()) +
+    #             axis.text.x = element_text(angle = 60,
+    #                                        hjust = 1)) +
+    scale_fill_brewer(palette = "Set2") +
+    labs(title = "Mean ratings by picture (sorted by US animal rating): INDIA\n",
+         x = "Pictures (sorted by US animal rating)")
+  ratings_ind2
+
+
 
 # --- REGRESSIONS -----------------------------------
 
+# look at straight-up contrasts
 contrasts(d_tidy$condition) -> contrasts_default
 
 contrasts_orth = cbind(bio.psych = c(4, -3, -3, 4, 4, -3, -3),
@@ -228,5 +250,32 @@ r1 = lmer(responseCoded ~ condition + (1 | worker_id) + (1 | swatch), d_tidy); s
 r2 = lmer(responseCoded ~ country + condition + (1 | worker_id) + (1 | swatch), d_tidy); summary(r2)
 r3 = lmer(responseCoded ~ country * condition + (1 | worker_id) + (1 | swatch), d_tidy); summary(r3)
 anova(r3, r2, r1)
+
+# look at animal rating as covariate
+
+d_noanim = d_tidy %>% 
+  full_join(animalrat_us) %>%
+  full_join(animalrat_ind) %>%
+  filter(condition != "animal") %>%
+  mutate(condition = factor(condition),
+         animal_rating_own = ifelse(country == "us",
+                                    animal_rating_us,
+                                    animal_rating_ind))
+View(d_noanim)
+
+contrasts_default2 = contrasts(d_noanim$condition); contrasts_default2
+
+contrasts_orth2 = cbind(bio.psych = c(-1, -1, 2, 2, -1, -1),
+                       hungr.pain = c(0, 0, 1, -1, 0, 0),
+                       experien.think = c(1, 1, 0, 0, 1, -3),
+                       affect.sense = c(1, 1, 0, 0, -2, 0),
+                       happy.feel = c(-1, 1, 0, 0, 0, 0))
+contrasts(d_noanim$condition) = contrasts_orth2
+
+s1 = lmer(responseCoded ~ country + condition + animal_rating_own + (1 | worker_id) + (1 | swatch), d_noanim); summary(s1)
+s2 = lmer(responseCoded ~ country + (condition * animal_rating_own) + (1 | worker_id) + (1 | swatch), d_noanim); summary(s2)
+s3 = lmer(responseCoded ~ country  * condition * animal_rating_own + (1 | worker_id) + (1 | swatch), d_noanim); summary(s3)
+s4 = lmer(responseCoded ~ country  * condition * poly(animal_rating_own, 2) + (1 | worker_id) + (1 | swatch), d_noanim); summary(s4)
+anova(s1, s2, s3, s4)
 
 
