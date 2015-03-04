@@ -42,6 +42,7 @@ for (f in files) {
     # subject-level data: demographics
     education = jd$answers$data$allData$education,
     english_native = jd$answers$data$allData$englishNative,
+    ethnicity = jd$answer$data$allData$ethnicity,
     gender = jd$answers$data$allData$gender,
     age = jd$answers$data$allData$age,
     religion = jd$answers$data$allData$religion,
@@ -64,11 +65,12 @@ glimpse(d.raw)
 d_tidy = d.raw %>%
   mutate(condition = factor(condition),
          worker_id = factor(worker_id),
+         gender = factor(gender),
+         ethnicity = factor(ethnicity),
+         religion = factor(religion),
+         age = as.numeric(age),
          education = factor(education),
          english_native = factor(english_native),
-         gender = factor(gender),
-         age = as.numeric(age),
-         religion = factor(religion),
          trialNum = as.integer(trialNum),
          response = factor(response))
 
@@ -103,8 +105,10 @@ files <- dir("production-results/")
 # files9 <- files8[-8]
 # files10 <- files9[-2]
 
-# still hackily exclude one file (no idea why!!)
+# still hackily exclude two files (no idea why!!)
 files <- files[-4] #3180JW2OT5LHFBJZ0C9XFNOFH5NJ5M.json
+files <- files[-44] #3BWI6RSP7HIORZBQA4D3GRPJ3417EL.json
+files <- files[-69] #3HMVI3QICK18MIDFLP8OMKQMIU5Y1T.json
 
 d.raw <- data.frame()
 for (f in files) {
@@ -123,6 +127,7 @@ for (f in files) {
     # subject-level data: demographics
     education = jd$answers$data$allData$education,
     english_native = jd$answers$data$allData$englishNative,
+    ethnicity = jd$answer$data$allData$ethnicity,
     gender = jd$answers$data$allData$gender,
     age = jd$answers$data$allData$age,
     religion = jd$answers$data$allData$religion,
@@ -145,11 +150,12 @@ glimpse(d.raw)
 d_tidy = d.raw %>%
   mutate(condition = factor(condition),
          worker_id = factor(worker_id),
+         gender = factor(gender),
+         ethnicity = factor(ethnicity),
+         religion = factor(religion),
+         age = as.numeric(age),
          education = factor(education),
          english_native = factor(english_native),
-         gender = factor(gender),
-         age = as.numeric(age),
-         religion = factor(religion),
          trialNum = as.integer(trialNum),
          response = factor(response))
 
