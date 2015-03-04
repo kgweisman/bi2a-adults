@@ -1,4 +1,14 @@
-# --- TABLES & SUMMARIES -----------------------------------
+# --- DEMOGRAPHICS -----------------------------------
+# education
+d_tidy %>% 
+  select(-trialNum, -swatch, -response, -responseCoded, -rt) %>%
+  distinct() %>%
+  group_by(country) %>%
+  count(education)
+
+
+
+# --- DATAFRAMES & SUMMARIES -----------------------------------
 
 # count observations
 n_india = d_tidy %>%
@@ -192,6 +202,27 @@ swatch_summary %>%
     labs(title = "Mean ratings by picture (sorted by US animal rating): US\n",
          x = "Pictures (sorted by US animal rating)")
   ratings_us
+
+# ... india (sorted by us rating)
+ratings_ind2 = animal_ratings %>% filter(country == "india") %>%
+  ggplot(aes(x = reorder(swatch, animal_rating_us), y = mean, fill = condition)) +
+  facet_wrap(~ condition, ncol = 2) +
+  geom_bar(stat = "identity", position = "identity", width = 0.5) +
+  #   geom_errorbar(aes(ymin = mean - 2*sd/sqrt(n),
+  #                     ymax = mean + 2*sd/sqrt(n),
+  #                     width = 0.1)) +
+  coord_cartesian(ylim = c(-3, 3)) +
+  theme_bw() +
+  theme(text = element_text(size = 20),
+        legend.position = "none",
+        axis.text.x = element_blank()) +
+  #             axis.text.x = element_text(angle = 60,
+  #                                        hjust = 1)) +
+  scale_fill_brewer(palette = "Set2") +
+  labs(title = "Mean ratings by picture (sorted by US animal rating): INDIA\n",
+       x = "Pictures (sorted by US animal rating)")
+ratings_ind2
+
   # ... india (sorted by indian rating)
   ratings_ind1 = animal_ratings %>% filter(country == "india") %>%
     ggplot(aes(x = reorder(swatch, animal_rating_ind), y = mean, fill = condition)) +
@@ -211,26 +242,6 @@ swatch_summary %>%
     labs(title = "Mean ratings by picture (sorted by Indian animal rating): INDIA\n",
          x = "Pictures (sorted by Indian animal rating)")
   ratings_ind1
-  # ... india (sorted by us rating)
-  ratings_ind2 = animal_ratings %>% filter(country == "india") %>%
-    ggplot(aes(x = reorder(swatch, animal_rating_us), y = mean, fill = condition)) +
-    facet_wrap(~ condition, ncol = 2) +
-    geom_bar(stat = "identity", position = "identity", width = 0.5) +
-    #   geom_errorbar(aes(ymin = mean - 2*sd/sqrt(n),
-    #                     ymax = mean + 2*sd/sqrt(n),
-    #                     width = 0.1)) +
-    coord_cartesian(ylim = c(-3, 3)) +
-    theme_bw() +
-    theme(text = element_text(size = 20),
-          legend.position = "none",
-          axis.text.x = element_blank()) +
-    #             axis.text.x = element_text(angle = 60,
-    #                                        hjust = 1)) +
-    scale_fill_brewer(palette = "Set2") +
-    labs(title = "Mean ratings by picture (sorted by US animal rating): INDIA\n",
-         x = "Pictures (sorted by US animal rating)")
-  ratings_ind2
-
 
 
 # --- REGRESSIONS -----------------------------------
