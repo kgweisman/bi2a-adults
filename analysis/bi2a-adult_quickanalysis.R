@@ -1,15 +1,4 @@
 # --- DEMOGRAPHICS -----------------------------------
-# education
-d_tidy %>% 
-  select(-trialNum, -swatch, -response, -responseCoded, -rt) %>%
-  distinct() %>%
-  group_by(country) %>%
-  count(education)
-
-
-
-# --- DATAFRAMES & SUMMARIES -----------------------------------
-
 # count observations
 n_india = d_tidy %>%
   filter(country == "india") %>%
@@ -22,6 +11,46 @@ n_us = d_tidy %>%
   count(worker_id) %>%
   nrow()
 n_us
+
+# gender
+d_tidy %>% 
+  select(-trialNum, -swatch, -response, -responseCoded, -rt) %>%
+  distinct() %>%
+  count(country, gender)
+
+# age
+d_tidy %>% 
+  select(-trialNum, -swatch, -response, -responseCoded, -rt) %>%
+  distinct() %>%
+  group_by(country) %>%
+  summarise(mean = mean(age, na.rm = T),
+            sd = sd(age, na.rm = T))
+
+# ethnicity
+d_tidy %>% 
+  select(-trialNum, -swatch, -response, -responseCoded, -rt) %>%
+  distinct() %>%
+  count(country, ethnicity)
+
+# religion
+d_tidy %>% 
+  select(-trialNum, -swatch, -response, -responseCoded, -rt) %>%
+  distinct() %>%
+  count(country, religion)
+
+# education
+d_tidy %>% 
+  select(-trialNum, -swatch, -response, -responseCoded, -rt) %>%
+  distinct() %>%
+  count(country, education)
+
+# english_native
+d_tidy %>% 
+  select(-trialNum, -swatch, -response, -responseCoded, -rt) %>%
+  distinct() %>%
+  count(country, english_native)
+
+# --- DATAFRAMES & SUMMARIES -----------------------------------
 
 # summarize by condition
 condition_summary = d_tidy %>%
