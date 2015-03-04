@@ -5,11 +5,13 @@ n_india = d_tidy %>%
   filter(country == "india") %>%
   count(worker_id) %>%
   nrow()
+n_india
 
 n_us = d_tidy %>%
   filter(country == "us") %>%
   count(worker_id) %>%
   nrow()
+n_us
 
 # summarize by condition
 condition_summary = d_tidy %>%
@@ -24,16 +26,34 @@ swatch_summary = d_tidy %>%
   group_by(country, swatch, condition) %>%
   summarise(mean = mean(responseCoded, na.rm = T),
             sd = sd(responseCoded, na.rm = T),
-            n = length(responseCoded)/48)
+            n = length(responseCoded))
 View(swatch_summary)
 
-# add us animal ratings to swatch_summary
+# add animal ratings to swatch_summary
 animal_ratings = swatch_summary %>%
   select(-sd, -n) %>%
   spread(condition, mean) %>%
   arrange(animal) %>%
   select(country, swatch, animal) %>%
   full_join(swatch_summary)
+View(animal_ratings)
+
+animalrat_us = animal_ratings %>%
+  filter(country == "us") %>%
+  select(swatch, animal_rating_us = animal) %>%
+  distinct()
+View(animalrat_us)
+
+animalrat_ind = animal_ratings %>%
+  filter(country == "india") %>%
+  select(swatch, animal_rating_ind = animal) %>%
+  distinct()
+View(animalrat_ind)
+
+animal_ratings = animal_ratings %>%
+  full_join(animalrat_us) %>% 
+  full_join(animalrat_ind) %>%
+  select(-animal)
 View(animal_ratings)
 
 # look at correlations of means (odd)
