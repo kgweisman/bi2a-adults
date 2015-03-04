@@ -168,7 +168,29 @@ d_us = d_tidy %>%
 
 d_tidy = full_join(d_india, d_us) %>%
   mutate(worker_id = factor(worker_id),
+         education = factor(education, 
+                            levels = c("hs_diploma", 
+                                       "college_some",
+                                       "college_assocDegree", 
+                                       "college_bachDegree",
+                                       "grad_some",
+                                       "grad_degree")),
+         english_native = factor(english_native,
+                                 levels = c("no",
+                                            "no_somewhatwell",
+                                            "no_moderatelywell",
+                                            "no_fluent",
+                                            "yes_multiple",
+                                            "yes_only")),
          religion = factor(religion),
+         response = factor(response,
+                           levels = c("definitely no",
+                                      "probably no",
+                                      "maybe no",
+                                      "equally yes/no",
+                                      "maybe yes",
+                                      "probably yes",
+                                      "definitely yes")),
          country = factor(country))
 glimpse(d_tidy)
 
