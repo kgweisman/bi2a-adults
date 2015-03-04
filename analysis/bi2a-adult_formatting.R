@@ -21,6 +21,10 @@ files <- dir("production-results/")
 # files2 <- files[-9]
 # files3 <- files2[-24]
 
+# hackily exclude two problematic files (no idea why)
+files <- files[-96] #3OLQQLKKNTYHBUCSBD20JHUSU0PJEU.json
+files <- files[-126] #3X73LLYYQ2NPEUUFGC2YXR8MVZCHN0.json
+
 d.raw <- data.frame()
 for (f in files) {
   # gather files
