@@ -100,7 +100,7 @@ files <- dir("production-results/")
 # files10 <- files9[-2]
 
 # still hackily exclude one file (no idea why!!)
-files <- files[-2]
+files <- files[-4] #3180JW2OT5LHFBJZ0C9XFNOFH5NJ5M.json
 
 d.raw <- data.frame()
 for (f in files) {

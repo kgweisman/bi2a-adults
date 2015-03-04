@@ -27,7 +27,7 @@ swatch_summary = d_tidy %>%
             n = length(responseCoded)/48)
 View(swatch_summary)
 
-# add animal ratings to swatch_summary
+# add us animal ratings to swatch_summary
 animal_ratings = swatch_summary %>%
   select(-sd, -n) %>%
   spread(condition, mean) %>%
@@ -166,8 +166,8 @@ swatch_summary %>%
     theme(text = element_text(size = 20),
           legend.position = "none",
           axis.text.x = element_blank()) +
-  #         axis.text.x = element_text(angle = 60,
-  #                                    hjust = 1)) +
+#           axis.text.x = element_text(angle = 60,
+#                                      hjust = 1)) +
     scale_fill_brewer(palette = "Set2") +
     labs(title = "Mean ratings by picture (sorted): US\n",
          x = "Pictures (sorted by animal rating)")
@@ -185,8 +185,8 @@ swatch_summary %>%
     theme(text = element_text(size = 20),
           legend.position = "none",
           axis.text.x = element_blank()) +
-    #         axis.text.x = element_text(angle = 60,
-    #                                    hjust = 1)) +
+#             axis.text.x = element_text(angle = 60,
+#                                        hjust = 1)) +
     scale_fill_brewer(palette = "Set2") +
     labs(title = "Mean ratings by picture (sorted): INDIA\n",
          x = "Pictures (sorted by animal rating)")
