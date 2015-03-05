@@ -50,6 +50,11 @@ d_tidy %>%
   distinct() %>%
   count(country, english_native)
 
+# commments
+# View(d_tidy %>%
+#   select(country, condition, comments) %>%
+#   distinct())
+
 # --- DATAFRAMES & SUMMARIES -----------------------------------
 
 # summarize by condition
@@ -58,7 +63,7 @@ condition_summary = d_tidy %>%
   summarise(mean = mean(responseCoded, na.rm = T),
             sd = sd(responseCoded, na.rm = T),
             n = length(responseCoded)/48)
-View(condition_summary)
+# View(condition_summary)
 
 # summarize by swatch and condition
 swatch_summary = d_tidy %>%
@@ -66,7 +71,7 @@ swatch_summary = d_tidy %>%
   summarise(mean = mean(responseCoded, na.rm = T),
             sd = sd(responseCoded, na.rm = T),
             n = length(responseCoded))
-View(swatch_summary)
+# View(swatch_summary)
 
 # add animal ratings to swatch_summary
 animal_ratings = swatch_summary %>%
@@ -75,25 +80,25 @@ animal_ratings = swatch_summary %>%
   arrange(animal) %>%
   select(country, swatch, animal) %>%
   full_join(swatch_summary)
-View(animal_ratings)
+# View(animal_ratings)
 
 animalrat_us = animal_ratings %>%
   filter(country == "us") %>%
   select(swatch, animal_rating_us = animal) %>%
   distinct()
-View(animalrat_us)
+# View(animalrat_us)
 
 animalrat_ind = animal_ratings %>%
   filter(country == "india") %>%
   select(swatch, animal_rating_ind = animal) %>%
   distinct()
-View(animalrat_ind)
+# View(animalrat_ind)
 
 animal_ratings = animal_ratings %>%
   full_join(animalrat_us) %>% 
   full_join(animalrat_ind) %>%
   select(-animal)
-View(animal_ratings)
+# View(animal_ratings)
 
 # look at correlations of means (odd)
 d_swatches = d_tidy %>%
@@ -122,15 +127,26 @@ condsum_plot = condition_summary %>%
   ggplot(aes(x = condition, y = mean, fill = condition)) +
   facet_wrap(~ country) +
   geom_bar(stat = "identity", position = "identity", width = 0.5) +
-  geom_errorbar(aes(ymin = mean - sd,
-                    ymax = mean  + sd,
+  geom_errorbar(aes(ymin = mean - 2*sd/n,
+                    ymax = mean  + 2*sd/n,
                     width = 0.1)) +
   theme_bw() +
   scale_fill_brewer(palette = "Set2") +
   theme(text = element_text(size = 20),
         legend.position = "none") +
-  labs(title = "Mean rating by condition and country\nError bars: standard deviation\n")
+  labs(title = "Mean rating by condition and country\nError bars: 95% CI\n")
 print(condsum_plot)
+
+condsum_plot2 = d_tidy %>%
+  ggplot(aes(x = condition, y = responseCoded, fill = condition)) +
+  facet_wrap(~ country) +
+  geom_boxplot() +
+  theme_bw() +
+  scale_fill_brewer(palette = "Set2") +
+  theme(text = element_text(size = 20),
+        legend.position = "none") +
+  labs(title = "Mean rating by condition and country\n")
+print(condsum_plot2)
 
 # mean rating by swatch and condition, per country
   # ... india
@@ -318,4 +334,11 @@ s3 = lmer(responseCoded ~ country  * condition * animal_rating_own + (1 | worker
 s4 = lmer(responseCoded ~ country  * condition * poly(animal_rating_own, 2) + (1 | worker_id) + (1 | swatch), d_noanim); summary(s4)
 anova(s1, s2, s3, s4)
 
+d_tidy %>% 
+  group_by(country, condition) %>%
+  summarise(mean = mean(responseCoded))
 
+# us
+us_bio = mean(-1.106, -0.497)
+us_psych = > mean(-0.432, -0.588, -0.656, -0.743)
+us_bio.psych = us_bio - us_psych
