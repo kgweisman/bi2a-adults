@@ -1,4 +1,7 @@
-# --- DEMOGRAPHICS -----------------------------------
+# --- READ IN DATA ------------------------------------------------------------
+d_tidy = read.csv("/Users/kweisman/Documents/Research (Stanford)/Projects/BI2A/bi2a-adults/data/run-india-and-us_01.csv", fileEncoding = "latin1")
+
+# --- DEMOGRAPHICS ------------------------------------------------------------
 # count observations
 n_india = d_tidy %>%
   filter(country == "india") %>%
