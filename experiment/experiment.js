@@ -15,6 +15,9 @@ var experiment = {
 		// condition and session information
 		condition: chosenCondition.condition,
 
+		// comprehension check
+		comprehensionCheck: "",
+
 		// demographic information about participant
 		age: "",
 		gender: "",
@@ -100,17 +103,6 @@ var experiment = {
 // set up button behavior
 $('.slide#consent button').click(function() { 
 	showSlide("instructions");
-});
-
-// continue to experiment
-$('.slide#instructions button').click(function() { 
-
-	// set parameters of this session
-	experiment.trials = swatches.slice();
-	experiment.condition = chosenCondition.condition.slice();
-
-	// go to first trial
-	experiment.next();
 });
 
 // start!
