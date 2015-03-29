@@ -14,7 +14,7 @@ var conditions = [
 	},
 	{
 		condition: "sense",
-		question: "can sense things nearby"
+		question: "can sense things that are close by"
 	},
 	{
 		condition: "happy",
