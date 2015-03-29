@@ -64,11 +64,16 @@
       
       <h1 id='title-text'>Picture Survey</h1>
       
-      <p class="survey-descrip">In this study, you will respond to questions about a series of "zoomed in," close-up pictures. We are interested in your opinions about these pictures. Please do not attempt to look these pictures up online - this will make the task take longer than expected!</p>
+      <p class="survey-descrip">In this study, you will respond to questions about a series of "zoomed in," close-up pictures. We are interested in your personal judgments of these pictures. Please do not attempt to look these pictures up online - this will make the task take longer than expected!</p>
 
-      <p class="survey-descrip"><b>Please respond with your opinion or intuition.</b></p>
+      <p class="survey-descrip">On each trial, you will see a close-up picture of something, and you will be asked to judge <b>whether or not that thing <span id="question-text">{{}}</span></b>.</p>
 
-      <p class="survey-descrip">On each trial, we will ask you one question about the photograph displayed. At the end of the session, we will ask you a few questions about your background.</p>
+      	<div class="control-group">
+          <div class="controls">
+          	<p class="survey-descrip">To make sure that you understand what we are asking you to think about, please restate the following sentence in your own words: <b>"I think that this one <span id="question-text">{{}}</span>"</b>:</p>
+            <textarea class="form-control" rows="1" id="restate" name="restate" style="width:80%;margin:10px auto 20px auto"></textarea>
+          </div>
+        </div>
 
       <div class="button" id="form">
         <button type="submit" class="btn btn-default">Next</button>
@@ -88,7 +93,7 @@
 
     <img />
 
-    <p class="fun-text" id="question">Do you think this one <span id="question-text">{{}}</span>?</p>
+    <p class="fun-text" id="question">Do you think that this one <span id="question-text">{{}}</span>?</p>
 
     <div>
       <button type="submit" class="btn btn-default" name="response" id="definitely no" value="3">Definitely<br />NO</button>
