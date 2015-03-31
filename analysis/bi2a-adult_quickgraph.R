@@ -9,7 +9,7 @@ ratings2_animal_scaled = animal_ratings %>%
 #   geom_text(vjust = -1,
 #             colour = "red") +
   theme_bw() +
-  coord_cartesian(ylim = c(-2,2)) +
+  coord_cartesian(ylim = c(-3,3)) +
   theme(text = element_text(size = 20),
         legend.position = "none",
         axis.text.x = element_text(angle = 60,
