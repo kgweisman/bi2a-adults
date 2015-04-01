@@ -1,3 +1,15 @@
+# --- PRELIMINARIES -----------------------------------------------------------
+
+# libraries
+library(dplyr)
+library(tidyr)
+library(ggplot2)
+library(lme4)
+library(lubridate)
+
+# clear environment
+rm(list=ls())
+
 # --- READ IN DATA ------------------------------------------------------------
 d_tidy = read.csv("/Users/kweisman/Documents/Research (Stanford)/Projects/BI2A/bi2a-adults/data/run-india-and-us_01.csv", fileEncoding = "latin1")
 
