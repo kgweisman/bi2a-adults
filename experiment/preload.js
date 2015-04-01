@@ -30,10 +30,10 @@ function preload(images, onLoadedOne, onLoadedAll) {
 		}
 	};
 
-	// load images 6 at a time
-	var concurrent = 13;
+	// load images
+	var concurrent = 48;
 	for(var i = 0; i < concurrent; i++) {
-		setTimeout(worker, 20 - i);
+		setTimeout(worker, 0);
 		};
 	}
 
@@ -45,7 +45,7 @@ function onLoadedOne() {
 	// $("#num-loaded").text(numLoadedImages); 
 
 	// display progress bar
-	var percentComplete = (numLoadedImages)/13 * 100;
+	var percentComplete = (numLoadedImages)/48 * 100;
 	var percentCompleteRounded = Math.round(percentComplete);
 	$('#preload .progress-bar').attr("aria-valuenow", percentComplete.toString());
 	$('#preload .progress-bar').css("width", percentComplete.toString()+"%");
