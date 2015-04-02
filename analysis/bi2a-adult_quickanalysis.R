@@ -102,19 +102,19 @@ animal_ratings = swatch_summary %>%
   full_join(swatch_summary)
 # View(animal_ratings)
 
-animalrat_us = animal_ratings %>%
-  filter(country == "us") %>%
-  select(swatch, animal_rating_us = animal) %>%
-  distinct()
-# View(animalrat_us)
-write.csv(animalrat_us, "/Users/kweisman/Documents/Research (Stanford)/Projects/BI2A/bi2a-adults/data/animal_ratings_us_adults.csv")
-
-animalrat_ind = animal_ratings %>%
-  filter(country == "india") %>%
-  select(swatch, animal_rating_ind = animal) %>%
-  distinct()
-# View(animalrat_ind)
-write.csv(animalrat_ind, "/Users/kweisman/Documents/Research (Stanford)/Projects/BI2A/bi2a-adults/data/animal_ratings_india_adults.csv")
+# animalrat_us = animal_ratings %>%
+#   filter(country == "us") %>%
+#   select(swatch, animal_rating_us = animal) %>%
+#   distinct()
+# # View(animalrat_us)
+# write.csv(animalrat_us, "/Users/kweisman/Documents/Research (Stanford)/Projects/BI2A/bi2a-adults/data/animal_ratings_us_adults.csv")
+# 
+# animalrat_ind = animal_ratings %>%
+#   filter(country == "india") %>%
+#   select(swatch, animal_rating_ind = animal) %>%
+#   distinct()
+# # View(animalrat_ind)
+# write.csv(animalrat_ind, "/Users/kweisman/Documents/Research (Stanford)/Projects/BI2A/bi2a-adults/data/animal_ratings_india_adults.csv")
 
 animal_ratings = animal_ratings %>%
   full_join(animalrat_us) %>% 
