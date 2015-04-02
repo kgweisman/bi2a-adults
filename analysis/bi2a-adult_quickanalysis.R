@@ -11,7 +11,12 @@ library(lubridate)
 rm(list=ls())
 
 # --- READ IN DATA ------------------------------------------------------------
-d_tidy = read.csv("/Users/kweisman/Documents/Research (Stanford)/Projects/BI2A/bi2a-adults/data/run-india-and-us_01.csv", fileEncoding = "latin1")
+
+# RUN 01
+# d_tidy = read.csv("/Users/kweisman/Documents/Research (Stanford)/Projects/BI2A/bi2a-adults/data/run-india-and-us_01.csv", fileEncoding = "latin1")
+
+# RUN 02
+d_tidy = read.csv("/Users/kweisman/Documents/Research (Stanford)/Projects/BI2A/bi2a-adults/data/run-india-and-us_02.csv", fileEncoding = "latin1")
 
 # --- DEMOGRAPHICS ------------------------------------------------------------
 # count observations
@@ -29,7 +34,7 @@ n_us
 
 # gender
 d_tidy %>% 
-  select(-trialNum, -swatch, -response, -responseCoded, -rt) %>%
+  select(country, worker_id, gender) %>%
   distinct() %>%
   count(country, gender)
 
@@ -43,29 +48,29 @@ d_tidy %>%
 
 # ethnicity
 d_tidy %>% 
-  select(-trialNum, -swatch, -response, -responseCoded, -rt) %>%
+  select(country, worker_id, ethnicity) %>%
   distinct() %>%
   count(country, ethnicity)
 
 # religion
 d_tidy %>% 
-  select(-trialNum, -swatch, -response, -responseCoded, -rt) %>%
+  select(country, worker_id, religion) %>%
   distinct() %>%
   count(country, religion)
 
 # education
 d_tidy %>% 
-  select(-trialNum, -swatch, -response, -responseCoded, -rt) %>%
+  select(country, worker_id, education) %>%
   distinct() %>%
   count(country, education)
 
 # english_native
 d_tidy %>% 
-  select(-trialNum, -swatch, -response, -responseCoded, -rt) %>%
+  select(country, worker_id, english_native) %>%
   distinct() %>%
   count(country, english_native)
 
-# commments
+# # commments
 # View(d_tidy %>%
 #   select(country, condition, comments) %>%
 #   distinct())

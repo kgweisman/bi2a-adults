@@ -1,6 +1,6 @@
-# plot, sorted by US adult ratings
-ratings2_animal_scaled = animal_ratings %>%
-  filter(country == "us" & condition == "animal") %>%
+# plot, sorted by own ratings
+animal_india = animal_ratings %>%
+  filter(country == "india" & condition == "animal") %>%
   ggplot(aes(x = reorder(swatch, mean), y = mean, label = n)) +
   geom_bar(stat = "identity", position = "identity", width = 0.5) +
   geom_errorbar(aes(ymin = mean - 2*sd/sqrt(n),
@@ -14,6 +14,6 @@ ratings2_animal_scaled = animal_ratings %>%
         legend.position = "none",
         axis.text.x = element_text(angle = 60,
                                    hjust = 1)) +
-  labs(title = "Mean binary responses to ANIMAL, by picture: Adults\n",
-       x = "Pictures (sorted by mean US adult response)")
-ratings2_animal_scaled
+  labs(title = "Mean scaled responses to ANIMAL, by picture: Indian adults\n",
+       x = "Pictures (sorted by mean Indian adult response)")
+animal_india
