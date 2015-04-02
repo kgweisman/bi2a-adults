@@ -1,3 +1,5 @@
+# --- PRELIMINARIES -----------------------------------------------------------
+
 # libraries
 library(dplyr)
 library(tidyr)
@@ -9,7 +11,9 @@ library(stats)
 # clear environment
 rm(list=ls())
 
-# --- INDIA -----------------------------------
+# --- RUN 1 -------------------------------------------------------------------
+
+# -------- INDIA: RUN 1 -------------------------------------------------------
 
 # set working directory for india
 setwd("/Users//kweisman/Documents/Research (Stanford)/Projects/BI2A/bi2a-adults/turk/run-india_01/")
@@ -62,7 +66,7 @@ for (f in files) {
 glimpse(d.raw)
 
 # clean up variables
-d_tidy = d.raw %>%
+d_tidy_01 = d.raw %>%
   mutate(condition = factor(condition),
          worker_id = factor(worker_id),
          gender = factor(gender),
@@ -74,19 +78,19 @@ d_tidy = d.raw %>%
          trialNum = as.integer(trialNum),
          response = factor(response))
 
-glimpse(d_tidy)
+glimpse(d_tidy_01)
 
 # fix miscoding of responseCoded
-d_tidy$responseCoded[d_tidy$response == "definitely no"] = -3
+d_tidy_01$responseCoded[d_tidy_01$response == "definitely no"] = -3
   
-glimpse(d_tidy)
+glimpse(d_tidy_01)
 
 # add country variable for us
-d_india = d_tidy %>%
+d_india_01 = d_tidy_01 %>%
   mutate(country = factor("india"))
-glimpse(d_india)
+glimpse(d_india_01)
 
-# --- US -----------------------------------
+# -------- US: RUN 1 ----------------------------------------------------------
 
 # set working directory for us
 setwd("/Users//kweisman/Documents/Research (Stanford)/Projects/BI2A/bi2a-adults/turk/run-us_01/")
@@ -147,7 +151,7 @@ for (f in files) {
 glimpse(d.raw)
 
 # clean up variables
-d_tidy = d.raw %>%
+d_tidy_01 = d.raw %>%
   mutate(condition = factor(condition),
          worker_id = factor(worker_id),
          gender = factor(gender),
@@ -159,20 +163,20 @@ d_tidy = d.raw %>%
          trialNum = as.integer(trialNum),
          response = factor(response))
 
-glimpse(d_tidy)
+glimpse(d_tidy_01)
 
 # fix miscoding of responseCoded
-d_tidy$responseCoded[d_tidy$response == "definitely no"] = -3
+d_tidy_01$responseCoded[d_tidy_01$response == "definitely no"] = -3
 
-glimpse(d_tidy)
+glimpse(d_tidy_01)
 
 # add country variable for us
-d_us = d_tidy %>%
+d_us_01 = d_tidy_01 %>%
   mutate(country = "us")
 
-# --- COMBINE -----------------------------------
+# -------- COMBINE: RUN 1 -----------------------------------------------------
 
-d_tidy = full_join(d_india, d_us) %>%
+d_tidy_01 = full_join(d_india_01, d_us_01) %>%
   mutate(worker_id = factor(worker_id),
          education = factor(education, 
                             levels = c("hs_diploma", 
@@ -198,7 +202,182 @@ d_tidy = full_join(d_india, d_us) %>%
                                       "probably yes",
                                       "definitely yes")),
          country = factor(country))
-glimpse(d_tidy)
+glimpse(d_tidy_01)
 
 # write to csv
-write.csv(d_tidy, "/Users/kweisman/Documents/Research (Stanford)/Projects/BI2A/bi2a-adults/data/run-india-and-us_01.csv")
+write.csv(d_tidy_01, "/Users/kweisman/Documents/Research (Stanford)/Projects/BI2A/bi2a-adults/data/run-india-and-us_01.csv")
+
+# --- RUN 2 -------------------------------------------------------------------
+
+# -------- INDIA: RUN 2 -------------------------------------------------------
+
+# set working directory for india
+setwd("/Users//kweisman/Documents/Research (Stanford)/Projects/BI2A/bi2a-adults/turk/run-india_02/")
+
+# mike's json for-loop
+files <- dir("production-results/")
+
+d.raw <- data.frame()
+for (f in files) {
+  # gather files
+  jf <- paste("production-results/",f,sep="")
+  
+  # parse JSON object
+  jd <- fromJSON(paste(readLines(jf), collapse=""))
+  
+  # store relevant variables in dataframe 
+  id <- data.frame(
+    # subject-level data: identity
+    condition = jd$answers$data$allData$condition,
+    worker_id = jd$WorkerId,
+    
+    # subject-level data: demographics
+    education = jd$answers$data$allData$education,
+    english_native = jd$answers$data$allData$englishNative,
+    ethnicity = jd$answer$data$allData$ethnicity,
+    gender = jd$answers$data$allData$gender,
+    age = jd$answers$data$allData$age,
+    religion = jd$answers$data$allData$religion,
+    
+    # subject-level data: free response
+    comp_check = jd$answers$data$allData$comprehensionCheck,
+    comments = jd$answers$data$allData$comments,
+    
+    # trial-level data:                    
+    trialNum = jd$answers$data$allData$trialData$trialNum,
+    swatch = jd$answers$data$allData$trialData$swatch,
+    response = jd$answers$data$allData$trialData$response,
+    responseCoded = jd$answers$data$allData$trialData$responseCoded,
+    rt = jd$answers$data$allData$trialData$rt)
+  
+  # bind into same dataframe
+  d.raw <- bind_rows(d.raw, id)
+}
+
+glimpse(d.raw)
+
+# clean up variables
+d_tidy_02 = d.raw %>%
+  mutate(condition = factor(condition),
+         worker_id = factor(worker_id),
+         gender = factor(gender),
+         ethnicity = factor(ethnicity),
+         religion = factor(religion),
+         age = as.numeric(age),
+         education = factor(education),
+         english_native = factor(english_native),
+         trialNum = as.integer(trialNum),
+         response = factor(response))
+
+glimpse(d_tidy_02)
+
+# fix miscoding of responseCoded - NOT NEEDED FOR RUN 2
+# d_tidy_02$responseCoded[d_tidy_02$response == "definitely no"] = -3
+
+# add country variable for us
+d_india_02 = d_tidy_02 %>%
+  mutate(country = factor("india"))
+glimpse(d_india_02)
+
+# -------- US: RUN 2 ----------------------------------------------------------
+
+# set working directory for us
+setwd("/Users//kweisman/Documents/Research (Stanford)/Projects/BI2A/bi2a-adults/turk/run-us_02/")
+
+# mike's json for-loop
+files <- dir("production-results/")
+
+d.raw <- data.frame()
+for (f in files) {
+  # gather files
+  jf <- paste("production-results/",f,sep="")
+  
+  # parse JSON object
+  jd <- fromJSON(paste(readLines(jf), collapse=""))
+  
+  # store relevant variables in dataframe 
+  id <- data.frame(
+    # subject-level data: identity
+    condition = jd$answers$data$allData$condition,
+    worker_id = jd$WorkerId,
+    
+    # subject-level data: demographics
+    education = jd$answers$data$allData$education,
+    english_native = jd$answers$data$allData$englishNative,
+    ethnicity = jd$answer$data$allData$ethnicity,
+    gender = jd$answers$data$allData$gender,
+    age = jd$answers$data$allData$age,
+    religion = jd$answers$data$allData$religion,
+    
+    # subject-level data: free response
+    comp_check = jd$answers$data$allData$comprehensionCheck,
+    comments = jd$answers$data$allData$comments,
+    
+    # trial-level data:                    
+    trialNum = jd$answers$data$allData$trialData$trialNum,
+    swatch = jd$answers$data$allData$trialData$swatch,
+    response = jd$answers$data$allData$trialData$response,
+    responseCoded = jd$answers$data$allData$trialData$responseCoded,
+    rt = jd$answers$data$allData$trialData$rt)
+  
+  # bind into same dataframe
+  d.raw <- bind_rows(d.raw, id)
+}
+
+glimpse(d.raw)
+
+# clean up variables
+d_tidy_02 = d.raw %>%
+  mutate(condition = factor(condition),
+         worker_id = factor(worker_id),
+         gender = factor(gender),
+         ethnicity = factor(ethnicity),
+         religion = factor(religion),
+         age = as.numeric(age),
+         education = factor(education),
+         english_native = factor(english_native),
+         trialNum = as.integer(trialNum),
+         response = factor(response))
+
+glimpse(d_tidy_02)
+
+# fix miscoding of responseCoded - NOT NEEDED FOR RUN 2
+# d_tidy_02$responseCoded[d_tidy_02$response == "definitely no"] = -3
+
+# add country variable for us
+d_us_02 = d_tidy_02 %>%
+  mutate(country = "us")
+
+# -------- COMBINE: RUN 2 -----------------------------------------------------
+
+d_tidy_02 = full_join(d_india_02, d_us_02) %>%
+  mutate(worker_id = factor(worker_id),
+         education = factor(education, 
+                            levels = c("hs_diploma", 
+                                       "college_some",
+                                       "college_assocDegree", 
+                                       "college_bachDegree",
+                                       "grad_some",
+                                       "grad_degree")),
+         english_native = factor(english_native,
+                                 levels = c("no",
+                                            "no_somewhatwell",
+                                            "no_moderatelywell",
+                                            "no_fluent",
+                                            "yes_multiple",
+                                            "yes_only")),
+         religion = factor(religion),
+         response = factor(response,
+                           levels = c("definitely no",
+                                      "probably no",
+                                      "maybe no",
+                                      "equally yes/no",
+                                      "maybe yes",
+                                      "probably yes",
+                                      "definitely yes")),
+         country = factor(country))
+glimpse(d_tidy_02)
+
+# write to csv
+write.csv(d_tidy_02, "/Users/kweisman/Documents/Research (Stanford)/Projects/BI2A/bi2a-adults/data/run-india-and-us_02.csv")
+
