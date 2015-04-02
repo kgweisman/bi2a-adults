@@ -378,5 +378,5 @@ d_tidy_02 = full_join(d_india_02A, d_india_02B) %>%
 glimpse(d_tidy_02)
 
 # write to csv
-write.csv(d_tidy_02, "/Users/kweisman/Documents/Research (Stanford)/Projects/BI2A/bi2a-adults/data/run-us-and-india_02.csv")
+write.csv(d_tidy_02, "/Users/kweisman/Documents/Research (Stanford)/Projects/BI2A/bi2a-adults/data/run-india-and-us_02.csv")
 
