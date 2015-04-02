@@ -209,10 +209,10 @@ write.csv(d_tidy_01, "/Users/kweisman/Documents/Research (Stanford)/Projects/BI2
 
 # --- RUN 2 -------------------------------------------------------------------
 
-# -------- INDIA: RUN 2 -------------------------------------------------------
+# -------- INDIA: RUN 2A ------------------------------------------------------
 
 # set working directory for india
-setwd("/Users//kweisman/Documents/Research (Stanford)/Projects/BI2A/bi2a-adults/turk/run-india_02/")
+setwd("/Users//kweisman/Documents/Research (Stanford)/Projects/BI2A/bi2a-adults/turk/run-india_02A/")
 
 # mike's json for-loop
 files <- dir("production-results/")
@@ -257,7 +257,7 @@ for (f in files) {
 glimpse(d.raw)
 
 # clean up variables
-d_tidy_02 = d.raw %>%
+d_tidy_02A = d.raw %>%
   mutate(condition = factor(condition),
          worker_id = factor(worker_id),
          gender = factor(gender),
@@ -269,20 +269,19 @@ d_tidy_02 = d.raw %>%
          trialNum = as.integer(trialNum),
          response = factor(response))
 
-glimpse(d_tidy_02)
+glimpse(d_tidy_02A)
 
 # fix miscoding of responseCoded - NOT NEEDED FOR RUN 2
-# d_tidy_02$responseCoded[d_tidy_02$response == "definitely no"] = -3
+# d_tidy_02A$responseCoded[d_tidy_02A$response == "definitely no"] = -3
 
 # add country variable for us
-d_india_02 = d_tidy_02 %>%
+d_india_02A = d_tidy_02A %>%
   mutate(country = factor("india"))
-glimpse(d_india_02)
 
-# -------- US: RUN 2 ----------------------------------------------------------
+# -------- INDIA: RUN 2B ------------------------------------------------------
 
 # set working directory for us
-setwd("/Users//kweisman/Documents/Research (Stanford)/Projects/BI2A/bi2a-adults/turk/run-us_02/")
+setwd("/Users//kweisman/Documents/Research (Stanford)/Projects/BI2A/bi2a-adults/turk/run-india_02B/")
 
 # mike's json for-loop
 files <- dir("production-results/")
@@ -327,7 +326,7 @@ for (f in files) {
 glimpse(d.raw)
 
 # clean up variables
-d_tidy_02 = d.raw %>%
+d_tidy_02B = d.raw %>%
   mutate(condition = factor(condition),
          worker_id = factor(worker_id),
          gender = factor(gender),
@@ -339,18 +338,18 @@ d_tidy_02 = d.raw %>%
          trialNum = as.integer(trialNum),
          response = factor(response))
 
-glimpse(d_tidy_02)
+glimpse(d_tidy_02B)
 
 # fix miscoding of responseCoded - NOT NEEDED FOR RUN 2
-# d_tidy_02$responseCoded[d_tidy_02$response == "definitely no"] = -3
+# d_tidy_02B$responseCoded[d_tidy_02B$response == "definitely no"] = -3
 
 # add country variable for us
-d_us_02 = d_tidy_02 %>%
-  mutate(country = "us")
+d_india_02B = d_tidy_02B %>%
+  mutate(country = "india")
 
 # -------- COMBINE: RUN 2 -----------------------------------------------------
 
-d_tidy_02 = full_join(d_india_02, d_us_02) %>%
+d_tidy_02 = full_join(d_india_02A, d_india_02B) %>%
   mutate(worker_id = factor(worker_id),
          education = factor(education, 
                             levels = c("hs_diploma", 
@@ -379,5 +378,5 @@ d_tidy_02 = full_join(d_india_02, d_us_02) %>%
 glimpse(d_tidy_02)
 
 # write to csv
-write.csv(d_tidy_02, "/Users/kweisman/Documents/Research (Stanford)/Projects/BI2A/bi2a-adults/data/run-india-and-us_02.csv")
+write.csv(d_tidy_02, "/Users/kweisman/Documents/Research (Stanford)/Projects/BI2A/bi2a-adults/data/run-us-and-india_02.csv")
 
