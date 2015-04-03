@@ -241,6 +241,21 @@ for (f in files) {
 }
 glimpse(d.raw)
 
+# clean up variables
+d_tidy = d.raw %>%
+  mutate(condition = factor(condition),
+         worker_id = factor(worker_id),
+         gender = factor(gender),
+         ethnicity = factor(ethnicity),
+         religion = factor(religion),
+         age = as.numeric(age),
+         education = factor(education),
+         english_native = factor(english_native),
+         trialNum = as.integer(trialNum),
+         response = factor(response))
+
+glimpse(d_tidy)
+
 # fix miscoding of responseCoded - NOT NEEDED FOR RUN 2
 # d_tidy$responseCoded[d_tidy$response == "definitely no"] = -3
 
@@ -383,8 +398,6 @@ glimpse(d_tidy)
 
 # # fix miscoding of responseCoded - NOT NEEDED FOR RUN 2
 # d_tidy$responseCoded[d_tidy$response == "definitely no"] = -3
-
-glimpse(d_tidy)
 
 # add country variable for us
 d_us_02 = d_tidy %>%
