@@ -16,7 +16,11 @@ rm(list=ls())
 # d_tidy = read.csv("/Users/kweisman/Documents/Research (Stanford)/Projects/BI2A/bi2a-adults/data/run-india-and-us_01.csv", fileEncoding = "latin1")
 
 # RUN 02
-d_tidy = read.csv("/Users/kweisman/Documents/Research (Stanford)/Projects/BI2A/bi2a-adults/data/run-india-and-us_02.csv", fileEncoding = "latin1")
+d_tidy = read.csv("/Users/kweisman/Documents/Research (Stanford)/Projects/BI2A/bi2a-adults/data/run-india-and-us_02_hand-coded.csv", fileEncoding = "latin1")
+
+# filter out by comp_filter
+d_tidy = d_tidy %>%
+  filter(comp_filter == "keep")
 
 # --- DEMOGRAPHICS ------------------------------------------------------------
 # count observations
