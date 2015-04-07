@@ -15,7 +15,8 @@ animal_india = animal_ratings %>%
         axis.text.x = element_text(angle = 60,
                                    hjust = 1)) +
   labs(title = "Mean scaled responses to ANIMAL, by picture: Indian adults\n",
-       x = "Pictures (sorted by mean Indian adult response)")
+       x = "Pictures (sorted by mean Indian adult response)") +
+  stat_smooth(aes(group = 1))
 animal_india
 
 # plot, sorted by own ratings
@@ -35,5 +36,7 @@ animal_us = animal_ratings %>%
         axis.text.x = element_text(angle = 60,
                                    hjust = 1)) +
   labs(title = "Mean scaled responses to ANIMAL, by picture: US adults\n",
-       x = "Pictures (sorted by mean US adult response)")
+       x = "Pictures (sorted by mean US adult response)") +
+  stat_smooth(aes(group = 1))
 animal_us
+
