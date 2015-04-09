@@ -105,7 +105,7 @@ animal_ratings = swatch_summary %>%
   select(country, swatch, animal) %>%
   full_join(swatch_summary) %>%
   select(-animal)
-View(animal_ratings)
+# View(animal_ratings)
 
 # animalrat_us = animal_ratings %>%
 #   filter(country == "us") %>%
@@ -128,9 +128,9 @@ View(animal_ratings)
 temp = animal_ratings %>%
   select(-sd, -n) %>%
   spread(country, mean) %>%
-  rename(animal_rating_us = us,
+  mutate(animal_rating_us = us,
          animal_rating_india = india) %>%
-  select(-condition) %>%
+  select(-condition, -us, -india) %>%
   mutate(animal_ranking_us = rank(animal_rating_us),
          animal_ranking_india = rank(animal_rating_india))
 View(temp)
