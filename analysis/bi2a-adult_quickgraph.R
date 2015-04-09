@@ -1,7 +1,8 @@
-# plot, sorted by own ratings
-animal_india = animal_ratings %>%
-  filter(country == "india" & condition == "animal") %>%
-  ggplot(aes(x = reorder(swatch, mean), y = mean, label = n)) +
+# plot, sorted by own animal ratings
+plot_india = d_analysis %>%
+  filter(country == "india") %>%
+  ggplot(aes(x = animal_selfrank, y = mean, label = n)) +
+  facet_wrap(~ condition) +
   geom_bar(stat = "identity", position = "identity", width = 0.5) +
   geom_errorbar(aes(ymin = mean - 2*sd/sqrt(n),
                     ymax = mean + 2*sd/sqrt(n),
@@ -14,15 +15,17 @@ animal_india = animal_ratings %>%
         legend.position = "none",
         axis.text.x = element_text(angle = 60,
                                    hjust = 1)) +
-  labs(title = "Mean scaled responses to ANIMAL, by picture: Indian adults\n",
-       x = "Pictures (sorted by mean Indian adult response)") +
+  labs(title = "Mean scaled responses, by condition: Indian adults\n",
+       x = "Pictures (sorted by mean Indian adult response to ANIMAL)") +
   stat_smooth(aes(group = 1))
-animal_india
+plot_india
+  
 
-# plot, sorted by own ratings
-animal_us = animal_ratings %>%
-  filter(country == "us" & condition == "animal") %>%
-  ggplot(aes(x = reorder(swatch, mean), y = mean, label = n)) +
+# plot, sorted by own animal ratings
+plot_us = d_analysis %>%
+  filter(country == "us") %>%
+  ggplot(aes(x = animal_selfrank, y = mean, label = n)) +
+  facet_wrap(~ condition) +
   geom_bar(stat = "identity", position = "identity", width = 0.5) +
   geom_errorbar(aes(ymin = mean - 2*sd/sqrt(n),
                     ymax = mean + 2*sd/sqrt(n),
@@ -35,7 +38,7 @@ animal_us = animal_ratings %>%
         legend.position = "none",
         axis.text.x = element_text(angle = 60,
                                    hjust = 1)) +
-  labs(title = "Mean scaled responses to ANIMAL, by picture: US adults\n",
-       x = "Pictures (sorted by mean US adult response)") +
+  labs(title = "Mean scaled responses, by condition: US adults\n",
+       x = "Pictures (sorted by mean US adult response to ANIMAL)") +
   stat_smooth(aes(group = 1))
-animal_us
+plot_us
