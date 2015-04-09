@@ -401,4 +401,7 @@ r6 = lm(mean ~ poly(selfrank, 3) * country, animal_ratings2); summary(r6)
 
 anova(r1, r4, r5, r6)
 
+with(animal_ratings2, cor.test(animal_ranking_us, animal_ranking_india))
+with(animal_ratings2, cor.test(animal_rating_us, animal_rating_india))
+
 
