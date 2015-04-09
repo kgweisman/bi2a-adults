@@ -482,6 +482,9 @@ for (f in files) {
                  jd$answer$data$allData$age),
     religion = ifelse(is.list(jd$answer$data$allData$religion) == TRUE, "NA",
                       jd$answer$data$allData$religion),
+    
+    # open-ended responses
+    comp_check = jd$answers$data$allData$comprehensionCheck,
     comments = jd$answers$data$allData$comments,
     
     # trial-level data:                    
@@ -555,6 +558,9 @@ for (f in files) {
                  jd$answer$data$allData$age),
     religion = ifelse(is.list(jd$answer$data$allData$religion) == TRUE, "NA",
                       jd$answer$data$allData$religion),
+    
+    # open-ended responses
+    comp_check = jd$answers$data$allData$comprehensionCheck,
     comments = jd$answers$data$allData$comments,
     
     # trial-level data:                    
@@ -625,5 +631,3 @@ glimpse(d_tidy_03)
 
 # write to csv
 write.csv(d_tidy_03, "/Users/kweisman/Documents/Research (Stanford)/Projects/BI2A/bi2a-adults/data/run-india-and-us_03.csv")
-
-
