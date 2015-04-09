@@ -37,18 +37,17 @@ d_tidy = full_join(d_tidy_02, d_tidy_03) %>%
   mutate(condition = factor(condition))
 
 # --- DEMOGRAPHICS ------------------------------------------------------------
-# count observations
-n_india = d_tidy %>%
-  filter(country == "india") %>%
-  count(worker_id) %>%
-  nrow()
-n_india
+# country
+d_tidy %>%
+  select(country, worker_id) %>%
+  distinct() %>%
+  count(country)
 
-n_us = d_tidy %>%
-  filter(country == "us") %>%
-  count(worker_id) %>%
-  nrow()
-n_us
+# condition
+d_tidy %>% 
+  select(country, worker_id, condition) %>%
+  distinct() %>%
+  count(country, condition)
 
 # gender
 d_tidy %>% 
