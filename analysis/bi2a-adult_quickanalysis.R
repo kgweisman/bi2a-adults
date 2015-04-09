@@ -209,34 +209,6 @@ d_analysis = all_ratings %>%
          sense_selfrank = as.numeric(sense_selfrank),
          think_selfrank = as.numeric(think_selfrank))
 
-# look at correlations of means (odd)
-
-cor_india = d_analysis %>% 
-  filter(country == "india") %>%
-  transmute(animal = as.numeric(animal_selfrat),
-            emotions = as.numeric(emotions_selfrat),
-            hungry = as.numeric(hungry_selfrat),
-            pain = as.numeric(pain_selfrat),
-            sense = as.numeric(sense_selfrat),
-            think = as.numeric(think_selfrat)) %>%
-  cor() %>%
-  round(3) %>%
-  as.dist()
-cor_india
-
-cor_us = d_analysis %>% 
-  filter(country == "us") %>%
-  transmute(animal = as.numeric(animal_selfrat),
-            emotions = as.numeric(emotions_selfrat),
-            hungry = as.numeric(hungry_selfrat),
-            pain = as.numeric(pain_selfrat),
-            sense = as.numeric(sense_selfrat),
-            think = as.numeric(think_selfrat)) %>%
-  cor() %>%
-  round(3) %>%
-  as.dist()
-cor_us
-
 # --- PLOTS -----------------------------------
 
 # overal mean ratings by condition and country
@@ -405,7 +377,7 @@ swatch_summary %>%
 #          x = "Pictures (sorted by Indian animal rating)")
 #   ratings_ind1
 
-# # --- REGRESSIONS -----------------------------------
+# # --- ANALYSIS -----------------------------------
 # 
 # # look at straight-up contrasts
 # contrasts(d_tidy$condition) -> contrasts_default
@@ -472,3 +444,32 @@ anova(r1a, r4a, r5a, r6a)
 # look at correlations between countries for rankings and ratings
 with(d_analysis, cor.test(animal_rank_us, animal_rank_india))
 with(d_analysis, cor.test(animal_rat_us, animal_rat_india))
+
+# look at correlations between conditions within each country
+# look at correlations of means (odd)
+
+cor_india = d_analysis %>% 
+  filter(country == "india") %>%
+  transmute(animal = as.numeric(animal_selfrat),
+            emotions = as.numeric(emotions_selfrat),
+            hungry = as.numeric(hungry_selfrat),
+            pain = as.numeric(pain_selfrat),
+            sense = as.numeric(sense_selfrat),
+            think = as.numeric(think_selfrat)) %>%
+  cor() %>%
+  round(3) %>%
+  as.dist()
+cor_india
+
+cor_us = d_analysis %>% 
+  filter(country == "us") %>%
+  transmute(animal = as.numeric(animal_selfrat),
+            emotions = as.numeric(emotions_selfrat),
+            hungry = as.numeric(hungry_selfrat),
+            pain = as.numeric(pain_selfrat),
+            sense = as.numeric(sense_selfrat),
+            think = as.numeric(think_selfrat)) %>%
+  cor() %>%
+  round(3) %>%
+  as.dist()
+cor_us
