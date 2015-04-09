@@ -13,14 +13,28 @@ rm(list=ls())
 # --- READ IN DATA ------------------------------------------------------------
 
 # RUN 01
-# d_tidy = read.csv("/Users/kweisman/Documents/Research (Stanford)/Projects/BI2A/bi2a-adults/data/run-india-and-us_01.csv", fileEncoding = "latin1")
+d_tidy_01 = read.csv("/Users/kweisman/Documents/Research (Stanford)/Projects/BI2A/bi2a-adults/data/run-india-and-us_01.csv", fileEncoding = "latin1")
 
 # RUN 02
-d_tidy = read.csv("/Users/kweisman/Documents/Research (Stanford)/Projects/BI2A/bi2a-adults/data/run-india-and-us_02_hand-coded.csv", fileEncoding = "latin1")
+d_tidy_02 = read.csv("/Users/kweisman/Documents/Research (Stanford)/Projects/BI2A/bi2a-adults/data/run-india-and-us_02_hand-coded.csv", fileEncoding = "latin1")
 
 # filter out by comp_filter
-d_tidy = d_tidy %>%
+d_tidy_02 = d_tidy_02 %>%
   filter(comp_filter == "keep")
+
+# RUN 03
+d_tidy_03 = read.csv("/Users/kweisman/Documents/Research (Stanford)/Projects/BI2A/bi2a-adults/data/run-india-and-us_03_hand-coded.csv", fileEncoding = "latin1")
+
+# filter out by comp_filter
+d_tidy_03 = d_tidy_03 %>%
+  filter(comp_filter == "keep")
+
+# SET WHICH DATA TO ANALYZE
+# d_tidy = d_tidy_01
+# d_tidy = d_tidy_02
+# d_tidy = d_tidy_03
+d_tidy = full_join(d_tidy_02, d_tidy_03) %>%
+  mutate(condition = factor(condition))
 
 # --- DEMOGRAPHICS ------------------------------------------------------------
 # count observations
@@ -97,77 +111,132 @@ swatch_summary = d_tidy %>%
             n = length(responseCoded))
 # View(swatch_summary)
 
-# add animal ratings to swatch_summary
-animal_ratings = swatch_summary %>%
+# add ratings to swatch_summary
+all_ratings = swatch_summary %>%
   select(-sd, -n) %>%
   spread(condition, mean) %>%
   arrange(animal) %>%
   select(country, swatch, animal) %>%
   full_join(swatch_summary) %>%
   select(-animal)
-# View(animal_ratings)
+# View(all_ratings)
 
-# animalrat_us = animal_ratings %>%
-#   filter(country == "us") %>%
-#   select(swatch, animal_rating_us = animal) %>%
-#   distinct()
-# # View(animalrat_us)
-# write.csv(animalrat_us, "/Users/kweisman/Documents/Research (Stanford)/Projects/BI2A/bi2a-adults/data/animal_ratings_us_adults.csv")
-# animalrat_us = read.csv("/Users/kweisman/Documents/Research (Stanford)/Projects/BI2A/bi2a-adults/data/animal_ratings_us_adults.csv")
-
-# 
-# animalrat_ind = animal_ratings %>%
-#   filter(country == "india") %>%
-#   select(swatch, animal_rating_ind = animal) %>%
-#   distinct()
-# # View(animalrat_ind)
-# write.csv(animalrat_ind, "/Users/kweisman/Documents/Research (Stanford)/Projects/BI2A/bi2a-adults/data/animal_ratings_india_adults.csv")
-
-# animalrat_ind = read.csv("/Users/kweisman/Documents/Research (Stanford)/Projects/BI2A/bi2a-adults/data/animal_ratings_india_adults.csv")
-
-temp = animal_ratings %>%
+temp_us = all_ratings %>%
+  filter(country == "us") %>%
   select(-sd, -n) %>%
-  spread(country, mean) %>%
-  mutate(animal_rating_us = us,
-         animal_rating_india = india) %>%
-  select(-condition, -us, -india) %>%
-  mutate(animal_ranking_us = rank(animal_rating_us),
-         animal_ranking_india = rank(animal_rating_india))
-View(temp)
+  spread(condition, mean) %>%
+  transmute(swatch = swatch,
+            animal_rat_us = animal,
+            emotions_rat_us = emotions,
+            hungry_rat_us = hungry,
+            pain_rat_us = pain,
+            sense_rat_us = sense,
+            think_rat_us = think) %>%
+  mutate(animal_rank_us = rank(animal_rat_us),
+         emotions_rank_us = rank(emotions_rat_us),
+         hungry_rank_us = rank(hungry_rat_us),
+         pain_rank_us = rank(pain_rat_us),
+         sense_rank_us = rank(sense_rat_us),
+         think_rank_us = rank(think_rat_us))
 
-animal_ratings2 = animal_ratings %>%
+temp_india = all_ratings %>%
+  filter(country == "india") %>%
+  select(-sd, -n) %>%
+  spread(condition, mean) %>%
+  transmute(swatch = swatch,
+            animal_rat_india = animal,
+            emotions_rat_india = emotions,
+            hungry_rat_india = hungry,
+            pain_rat_india = pain,
+            sense_rat_india = sense,
+            think_rat_india = think) %>%
+  mutate(animal_rank_india = rank(animal_rat_india),
+         emotions_rank_india = rank(emotions_rat_india),
+         hungry_rank_india = rank(hungry_rat_india),
+         pain_rank_india = rank(pain_rat_india),
+         sense_rank_india = rank(sense_rat_india),
+         think_rank_india = rank(think_rat_india))
+
+temp = full_join(temp_us, temp_india)
+
+d_analysis = all_ratings %>%
   full_join(temp) %>% 
-  select(-condition) %>%
-  mutate(selfrat = ifelse(country == "india", animal_rating_india,
-                          ifelse(country == "us", animal_rating_us,
-                                 "NA")),
-         selfrank = ifelse(country == "india", animal_ranking_india,
-                           ifelse(country == "us", animal_ranking_us,
-                                  "NA"))) %>%
-  mutate(selfrat = as.numeric(as.character(selfrat)),
-         selfrank = as.numeric(as.character(selfrank)))
-  
-View(animal_ratings2)
+  mutate(animal_selfrat = ifelse(country == "india", animal_rat_india,
+                                 ifelse(country == "us", animal_rat_us,
+                                        "NA")),
+         emotions_selfrat = ifelse(country == "india", emotions_rat_india,
+                                 ifelse(country == "us", emotions_rat_us,
+                                        "NA")),
+         hungry_selfrat = ifelse(country == "india", hungry_rat_india,
+                                 ifelse(country == "us", hungry_rat_us,
+                                        "NA")),
+         pain_selfrat = ifelse(country == "india", pain_rat_india,
+                                   ifelse(country == "us", pain_rat_us,
+                                          "NA")),
+         sense_selfrat = ifelse(country == "india", sense_rat_india,
+                                 ifelse(country == "us", sense_rat_us,
+                                        "NA")),
+         think_selfrat = ifelse(country == "india", think_rat_india,
+                                   ifelse(country == "us", think_rat_us,
+                                          "NA"))) %>%
+  mutate(animal_selfrank = ifelse(country == "india", animal_rank_india,
+                                 ifelse(country == "us", animal_rank_us,
+                                        "NA")),
+         emotions_selfrank = ifelse(country == "india", emotions_rank_india,
+                                   ifelse(country == "us", emotions_rank_us,
+                                          "NA")),
+         hungry_selfrank = ifelse(country == "india", hungry_rank_india,
+                                 ifelse(country == "us", hungry_rank_us,
+                                        "NA")),
+         pain_selfrank = ifelse(country == "india", pain_rank_india,
+                               ifelse(country == "us", pain_rank_us,
+                                      "NA")),
+         sense_selfrank = ifelse(country == "india", sense_rank_india,
+                                ifelse(country == "us", sense_rank_us,
+                                       "NA")),
+         think_selfrank = ifelse(country == "india", think_rank_india,
+                                ifelse(country == "us", think_rank_us,
+                                       "NA"))) %>%
+  mutate(animal_selfrat = as.numeric(animal_selfrat),
+         emotions_selfrat = as.numeric(emotions_selfrat),
+         hungry_selfrat = as.numeric(hungry_selfrat),
+         pain_selfrat = as.numeric(pain_selfrat),
+         sense_selfrat = as.numeric(sense_selfrat),
+         think_selfrat = as.numeric(think_selfrat),
+         animal_selfrank = as.numeric(animal_selfrank),
+         emotions_selfrank = as.numeric(emotions_selfrank),
+         hungry_selfrank = as.numeric(hungry_selfrank),
+         pain_selfrank = as.numeric(pain_selfrank),
+         sense_selfrank = as.numeric(sense_selfrank),
+         think_selfrank = as.numeric(think_selfrank))
 
-# # look at correlations of means (odd)
-# d_swatches = d_tidy %>%
-#   select(country, condition, worker_id, swatch, responseCoded) %>%
-#   #   spread(condition, responseCoded) %>%
-#   group_by(country, swatch, condition) %>%
-#   summarise(mean = mean(responseCoded)) %>%
-#   spread(condition, mean)
-# 
-# cor_india = d_swatches %>% 
-#   filter(country == "india") %>%
-#   select (-swatch, -country) %>% 
-#   cor()
-# cor_india
-# 
-# cor_us = d_swatches %>% 
-#   filter(country == "us") %>%
-#   select (-swatch, -country) %>% 
-#   cor()
-# cor_us
+# look at correlations of means (odd)
+
+cor_india = d_analysis %>% 
+  filter(country == "india") %>%
+  transmute(animal = as.numeric(animal_selfrat),
+            emotions = as.numeric(emotions_selfrat),
+            hungry = as.numeric(hungry_selfrat),
+            pain = as.numeric(pain_selfrat),
+            sense = as.numeric(sense_selfrat),
+            think = as.numeric(think_selfrat)) %>%
+  cor() %>%
+  round(3) %>%
+  as.dist()
+cor_india
+
+cor_us = d_analysis %>% 
+  filter(country == "us") %>%
+  transmute(animal = as.numeric(animal_selfrat),
+            emotions = as.numeric(emotions_selfrat),
+            hungry = as.numeric(hungry_selfrat),
+            pain = as.numeric(pain_selfrat),
+            sense = as.numeric(sense_selfrat),
+            think = as.numeric(think_selfrat)) %>%
+  cor() %>%
+  round(3) %>%
+  as.dist()
+cor_us
 
 # --- PLOTS -----------------------------------
 
@@ -186,8 +255,8 @@ condsum_plot = condition_summary %>%
   labs(title = "Mean rating by condition and country\nError bars: 95% CI\n")
 print(condsum_plot)
 
-condsum_plot2 = d_tidy %>%
-  ggplot(aes(x = condition, y = responseCoded, fill = condition)) +
+condsum_plot2 = d_analysis %>%
+  ggplot(aes(x = condition, y = mean, fill = condition)) +
   facet_wrap(~ country) +
   geom_boxplot() +
   theme_bw() +
@@ -277,65 +346,65 @@ swatch_summary %>%
     labs(title = "Histogram of sds of animal ratings\nacross pictures\n")
 
 # look at all ratings sorted by animal ratings
-  # ... us (sorted by us rating)
-  ratings_us = animal_ratings %>% filter(country == "us") %>%
-    ggplot(aes(x = reorder(swatch, animal_rating_us), y = mean, fill = condition)) +
-    facet_wrap(~ condition, ncol = 2) +
-    geom_bar(stat = "identity", position = "identity", width = 0.5) +
-  #   geom_errorbar(aes(ymin = mean - 2*sd/sqrt(n),
-  #                     ymax = mean + 2*sd/sqrt(n),
-  #                     width = 0.1)) +
-    coord_cartesian(ylim = c(-3, 3)) +
-    theme_bw() +
-    theme(text = element_text(size = 20),
-          legend.position = "none",
-          axis.text.x = element_blank()) +
-#           axis.text.x = element_text(angle = 60,
-#                                      hjust = 1)) +
-    scale_fill_brewer(palette = "Set2") +
-    labs(title = "Mean ratings by picture (sorted by US animal rating): US\n",
-         x = "Pictures (sorted by US animal rating)")
-  ratings_us
-
-# ... india (sorted by us rating)
-ratings_ind2 = animal_ratings %>% filter(country == "india") %>%
-  ggplot(aes(x = reorder(swatch, animal_rating_us), y = mean, fill = condition)) +
-  facet_wrap(~ condition, ncol = 2) +
-  geom_bar(stat = "identity", position = "identity", width = 0.5) +
-  #   geom_errorbar(aes(ymin = mean - 2*sd/sqrt(n),
-  #                     ymax = mean + 2*sd/sqrt(n),
-  #                     width = 0.1)) +
-  coord_cartesian(ylim = c(-3, 3)) +
-  theme_bw() +
-  theme(text = element_text(size = 20),
-        legend.position = "none",
-        axis.text.x = element_blank()) +
-  #             axis.text.x = element_text(angle = 60,
-  #                                        hjust = 1)) +
-  scale_fill_brewer(palette = "Set2") +
-  labs(title = "Mean ratings by picture (sorted by US animal rating): INDIA\n",
-       x = "Pictures (sorted by US animal rating)")
-ratings_ind2
-
-  # ... india (sorted by indian rating)
-  ratings_ind1 = animal_ratings %>% filter(country == "india") %>%
-    ggplot(aes(x = reorder(swatch, animal_rating_ind), y = mean, fill = condition)) +
-    facet_wrap(~ condition, ncol = 2) +
-    geom_bar(stat = "identity", position = "identity", width = 0.5) +
-    #   geom_errorbar(aes(ymin = mean - 2*sd/sqrt(n),
-    #                     ymax = mean + 2*sd/sqrt(n),
-    #                     width = 0.1)) +
-    coord_cartesian(ylim = c(-3, 3)) +
-    theme_bw() +
-    theme(text = element_text(size = 20),
-          legend.position = "none",
-          axis.text.x = element_blank()) +
-#             axis.text.x = element_text(angle = 60,
-#                                        hjust = 1)) +
-    scale_fill_brewer(palette = "Set2") +
-    labs(title = "Mean ratings by picture (sorted by Indian animal rating): INDIA\n",
-         x = "Pictures (sorted by Indian animal rating)")
-  ratings_ind1
+#   # ... us (sorted by us rating)
+#   ratings_us = animal_ratings %>% filter(country == "us") %>%
+#     ggplot(aes(x = reorder(swatch, animal_rating_us), y = mean, fill = condition)) +
+#     facet_wrap(~ condition, ncol = 2) +
+#     geom_bar(stat = "identity", position = "identity", width = 0.5) +
+#   #   geom_errorbar(aes(ymin = mean - 2*sd/sqrt(n),
+#   #                     ymax = mean + 2*sd/sqrt(n),
+#   #                     width = 0.1)) +
+#     coord_cartesian(ylim = c(-3, 3)) +
+#     theme_bw() +
+#     theme(text = element_text(size = 20),
+#           legend.position = "none",
+#           axis.text.x = element_blank()) +
+# #           axis.text.x = element_text(angle = 60,
+# #                                      hjust = 1)) +
+#     scale_fill_brewer(palette = "Set2") +
+#     labs(title = "Mean ratings by picture (sorted by US animal rating): US\n",
+#          x = "Pictures (sorted by US animal rating)")
+#   ratings_us
+# 
+# # ... india (sorted by us rating)
+# ratings_ind2 = animal_ratings %>% filter(country == "india") %>%
+#   ggplot(aes(x = reorder(swatch, animal_rating_us), y = mean, fill = condition)) +
+#   facet_wrap(~ condition, ncol = 2) +
+#   geom_bar(stat = "identity", position = "identity", width = 0.5) +
+#   #   geom_errorbar(aes(ymin = mean - 2*sd/sqrt(n),
+#   #                     ymax = mean + 2*sd/sqrt(n),
+#   #                     width = 0.1)) +
+#   coord_cartesian(ylim = c(-3, 3)) +
+#   theme_bw() +
+#   theme(text = element_text(size = 20),
+#         legend.position = "none",
+#         axis.text.x = element_blank()) +
+#   #             axis.text.x = element_text(angle = 60,
+#   #                                        hjust = 1)) +
+#   scale_fill_brewer(palette = "Set2") +
+#   labs(title = "Mean ratings by picture (sorted by US animal rating): INDIA\n",
+#        x = "Pictures (sorted by US animal rating)")
+# ratings_ind2
+# 
+#   # ... india (sorted by indian rating)
+#   ratings_ind1 = animal_ratings %>% filter(country == "india") %>%
+#     ggplot(aes(x = reorder(swatch, animal_rating_ind), y = mean, fill = condition)) +
+#     facet_wrap(~ condition, ncol = 2) +
+#     geom_bar(stat = "identity", position = "identity", width = 0.5) +
+#     #   geom_errorbar(aes(ymin = mean - 2*sd/sqrt(n),
+#     #                     ymax = mean + 2*sd/sqrt(n),
+#     #                     width = 0.1)) +
+#     coord_cartesian(ylim = c(-3, 3)) +
+#     theme_bw() +
+#     theme(text = element_text(size = 20),
+#           legend.position = "none",
+#           axis.text.x = element_blank()) +
+# #             axis.text.x = element_text(angle = 60,
+# #                                        hjust = 1)) +
+#     scale_fill_brewer(palette = "Set2") +
+#     labs(title = "Mean ratings by picture (sorted by Indian animal rating): INDIA\n",
+#          x = "Pictures (sorted by Indian animal rating)")
+#   ratings_ind1
 
 # # --- REGRESSIONS -----------------------------------
 # 
@@ -392,16 +461,15 @@ ratings_ind2
 # us_bio.psych = us_bio - us_psych
 
 # with rankings
-r1a = lm(mean ~ poly(selfrank, 1) + country, animal_ratings2); summary(r1a)
-r2a = lm(mean ~ poly(selfrank, 2) + country, animal_ratings2); summary(r2a)
-r3a = lm(mean ~ poly(selfrank, 3) + country, animal_ratings2); summary(r3a)
-r4a = lm(mean ~ poly(selfrank, 1) * country, animal_ratings2); summary(r4a)
-r5a = lm(mean ~ poly(selfrank, 2) * country, animal_ratings2); summary(r5a)
-r6a = lm(mean ~ poly(selfrank, 3) * country, animal_ratings2); summary(r6a)
+r1a = lm(mean ~ poly(animal_selfrank, 1) + condition + country, d_analysis); summary(r1a)
+r2a = lm(mean ~ poly(animal_selfrank, 2) + condition + country, d_analysis); summary(r2a)
+r3a = lm(mean ~ poly(animal_selfrank, 3) + condition + country, d_analysis); summary(r3a)
+r4a = lm(mean ~ poly(animal_selfrank, 1) * condition * country, d_analysis); summary(r4a)
+r5a = lm(mean ~ poly(animal_selfrank, 2) * condition * country, d_analysis); summary(r5a)
+r6a = lm(mean ~ poly(animal_selfrank, 3) * condition * country, d_analysis); summary(r6a)
 
 anova(r1a, r4a, r5a, r6a)
 
-with(animal_ratings2, cor.test(animal_ranking_us, animal_ranking_india))
-with(animal_ratings2, cor.test(animal_rating_us, animal_rating_india))
-
-
+# look at correlations between countries for rankings and ratings
+with(d_analysis, cor.test(animal_rank_us, animal_rank_india))
+with(d_analysis, cor.test(animal_rat_us, animal_rat_india))
