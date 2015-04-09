@@ -391,15 +391,15 @@ ratings_ind2
 # us_psych = > mean(-0.432, -0.588, -0.656, -0.743)
 # us_bio.psych = us_bio - us_psych
 
+# with rankings
+r1a = lm(mean ~ poly(selfrank, 1) + country, animal_ratings2); summary(r1a)
+r2a = lm(mean ~ poly(selfrank, 2) + country, animal_ratings2); summary(r2a)
+r3a = lm(mean ~ poly(selfrank, 3) + country, animal_ratings2); summary(r3a)
+r4a = lm(mean ~ poly(selfrank, 1) * country, animal_ratings2); summary(r4a)
+r5a = lm(mean ~ poly(selfrank, 2) * country, animal_ratings2); summary(r5a)
+r6a = lm(mean ~ poly(selfrank, 3) * country, animal_ratings2); summary(r6a)
 
-r1 = lm(mean ~ poly(selfrank, 1) + country, animal_ratings2); summary(r1)
-r2 = lm(mean ~ poly(selfrank, 2) + country, animal_ratings2); summary(r2)
-r3 = lm(mean ~ poly(selfrank, 3) + country, animal_ratings2); summary(r3)
-r4 = lm(mean ~ poly(selfrank, 1) * country, animal_ratings2); summary(r4)
-r5 = lm(mean ~ poly(selfrank, 2) * country, animal_ratings2); summary(r5)
-r6 = lm(mean ~ poly(selfrank, 3) * country, animal_ratings2); summary(r6)
-
-anova(r1, r4, r5, r6)
+anova(r1a, r4a, r5a, r6a)
 
 with(animal_ratings2, cor.test(animal_ranking_us, animal_ranking_india))
 with(animal_ratings2, cor.test(animal_rating_us, animal_rating_india))
