@@ -39,4 +39,3 @@ animal_us = animal_ratings %>%
        x = "Pictures (sorted by mean US adult response)") +
   stat_smooth(aes(group = 1))
 animal_us
-

@@ -103,8 +103,9 @@ animal_ratings = swatch_summary %>%
   spread(condition, mean) %>%
   arrange(animal) %>%
   select(country, swatch, animal) %>%
-  full_join(swatch_summary)
-# View(animal_ratings)
+  full_join(swatch_summary) %>%
+  select(-animal)
+View(animal_ratings)
 
 # animalrat_us = animal_ratings %>%
 #   filter(country == "us") %>%
@@ -112,6 +113,8 @@ animal_ratings = swatch_summary %>%
 #   distinct()
 # # View(animalrat_us)
 # write.csv(animalrat_us, "/Users/kweisman/Documents/Research (Stanford)/Projects/BI2A/bi2a-adults/data/animal_ratings_us_adults.csv")
+# animalrat_us = read.csv("/Users/kweisman/Documents/Research (Stanford)/Projects/BI2A/bi2a-adults/data/animal_ratings_us_adults.csv")
+
 # 
 # animalrat_ind = animal_ratings %>%
 #   filter(country == "india") %>%
@@ -120,31 +123,51 @@ animal_ratings = swatch_summary %>%
 # # View(animalrat_ind)
 # write.csv(animalrat_ind, "/Users/kweisman/Documents/Research (Stanford)/Projects/BI2A/bi2a-adults/data/animal_ratings_india_adults.csv")
 
-animal_ratings = animal_ratings %>%
-  full_join(animalrat_us) %>% 
-  full_join(animalrat_ind) %>%
-  select(-animal)
-# View(animal_ratings)
+# animalrat_ind = read.csv("/Users/kweisman/Documents/Research (Stanford)/Projects/BI2A/bi2a-adults/data/animal_ratings_india_adults.csv")
 
-# look at correlations of means (odd)
-d_swatches = d_tidy %>%
-  select(country, condition, worker_id, swatch, responseCoded) %>%
-  #   spread(condition, responseCoded) %>%
-  group_by(country, swatch, condition) %>%
-  summarise(mean = mean(responseCoded)) %>%
-  spread(condition, mean)
+temp = animal_ratings %>%
+  select(-sd, -n) %>%
+  spread(country, mean) %>%
+  rename(animal_rating_us = us,
+         animal_rating_india = india) %>%
+  select(-condition) %>%
+  mutate(animal_ranking_us = rank(animal_rating_us),
+         animal_ranking_india = rank(animal_rating_india))
+View(temp)
 
-cor_india = d_swatches %>% 
-  filter(country == "india") %>%
-  select (-swatch, -country) %>% 
-  cor()
-cor_india
+animal_ratings2 = animal_ratings %>%
+  full_join(temp) %>% 
+  select(-condition) %>%
+  mutate(selfrat = ifelse(country == "india", animal_rating_india,
+                          ifelse(country == "us", animal_rating_us,
+                                 "NA")),
+         selfrank = ifelse(country == "india", animal_ranking_india,
+                           ifelse(country == "us", animal_ranking_us,
+                                  "NA"))) %>%
+  mutate(selfrat = as.numeric(as.character(selfrat)),
+         selfrank = as.numeric(as.character(selfrank)))
+  
+View(animal_ratings2)
 
-cor_us = d_swatches %>% 
-  filter(country == "us") %>%
-  select (-swatch, -country) %>% 
-  cor()
-cor_us
+# # look at correlations of means (odd)
+# d_swatches = d_tidy %>%
+#   select(country, condition, worker_id, swatch, responseCoded) %>%
+#   #   spread(condition, responseCoded) %>%
+#   group_by(country, swatch, condition) %>%
+#   summarise(mean = mean(responseCoded)) %>%
+#   spread(condition, mean)
+# 
+# cor_india = d_swatches %>% 
+#   filter(country == "india") %>%
+#   select (-swatch, -country) %>% 
+#   cor()
+# cor_india
+# 
+# cor_us = d_swatches %>% 
+#   filter(country == "us") %>%
+#   select (-swatch, -country) %>% 
+#   cor()
+# cor_us
 
 # --- PLOTS -----------------------------------
 
@@ -314,57 +337,68 @@ ratings_ind2
          x = "Pictures (sorted by Indian animal rating)")
   ratings_ind1
 
+# # --- REGRESSIONS -----------------------------------
+# 
+# # look at straight-up contrasts
+# contrasts(d_tidy$condition) -> contrasts_default
+# 
+# contrasts_orth = cbind(bio.psych = c(4, -3, -3, 4, 4, -3, -3),
+#                        animal.hungrpain = c(2, 0, 0, -1, -1, 0, 0),
+#                        hungr.pain = c(0, 0, 0, 1, -1, 0, 0),
+#                        experien.think = c(0, 1, 1, 0, 0, 1, -3),
+#                        affect.sense = c(0, 1, 1, 0, 0, -2, 0),
+#                        happy.feel = c(0, -1, 1, 0, 0, 0, 0))
+# contrasts(d_tidy$condition) = contrasts_orth
+# 
+# r1 = lmer(responseCoded ~ condition + (1 | worker_id) + (1 | swatch), d_tidy); summary(r1)
+# r2 = lmer(responseCoded ~ country + condition + (1 | worker_id) + (1 | swatch), d_tidy); summary(r2)
+# r3 = lmer(responseCoded ~ country * condition + (1 | worker_id) + (1 | swatch), d_tidy); summary(r3)
+# anova(r3, r2, r1)
+# 
+# # look at animal rating as covariate
+# 
+# d_noanim = d_tidy %>% 
+#   full_join(animalrat_us) %>%
+#   full_join(animalrat_ind) %>%
+#   filter(condition != "animal") %>%
+#   mutate(condition = factor(condition),
+#          animal_rating_own = ifelse(country == "us",
+#                                     animal_rating_us,
+#                                     animal_rating_ind))
+# View(d_noanim)
+# 
+# contrasts_default2 = contrasts(d_noanim$condition); contrasts_default2
+# 
+# contrasts_orth2 = cbind(bio.psych = c(-1, -1, 2, 2, -1, -1),
+#                        hungr.pain = c(0, 0, 1, -1, 0, 0),
+#                        experien.think = c(1, 1, 0, 0, 1, -3),
+#                        affect.sense = c(1, 1, 0, 0, -2, 0),
+#                        happy.feel = c(-1, 1, 0, 0, 0, 0))
+# contrasts(d_noanim$condition) = contrasts_orth2
+# 
+# s1 = lmer(responseCoded ~ country + condition + animal_rating_own + (1 | worker_id) + (1 | swatch), d_noanim); summary(s1)
+# s2 = lmer(responseCoded ~ country + (condition * animal_rating_own) + (1 | worker_id) + (1 | swatch), d_noanim); summary(s2)
+# s3 = lmer(responseCoded ~ country  * condition * animal_rating_own + (1 | worker_id) + (1 | swatch), d_noanim); summary(s3)
+# s4 = lmer(responseCoded ~ country  * condition * poly(animal_rating_own, 2) + (1 | worker_id) + (1 | swatch), d_noanim); summary(s4)
+# anova(s1, s2, s3, s4)
+# 
+# d_tidy %>% 
+#   group_by(country, condition) %>%
+#   summarise(mean = mean(responseCoded))
+# 
+# # us
+# us_bio = mean(-1.106, -0.497)
+# us_psych = > mean(-0.432, -0.588, -0.656, -0.743)
+# us_bio.psych = us_bio - us_psych
 
-# --- REGRESSIONS -----------------------------------
 
-# look at straight-up contrasts
-contrasts(d_tidy$condition) -> contrasts_default
+r1 = lm(mean ~ poly(selfrank, 1) + country, animal_ratings2); summary(r1)
+r2 = lm(mean ~ poly(selfrank, 2) + country, animal_ratings2); summary(r2)
+r3 = lm(mean ~ poly(selfrank, 3) + country, animal_ratings2); summary(r3)
+r4 = lm(mean ~ poly(selfrank, 1) * country, animal_ratings2); summary(r4)
+r5 = lm(mean ~ poly(selfrank, 2) * country, animal_ratings2); summary(r5)
+r6 = lm(mean ~ poly(selfrank, 3) * country, animal_ratings2); summary(r6)
 
-contrasts_orth = cbind(bio.psych = c(4, -3, -3, 4, 4, -3, -3),
-                       animal.hungrpain = c(2, 0, 0, -1, -1, 0, 0),
-                       hungr.pain = c(0, 0, 0, 1, -1, 0, 0),
-                       experien.think = c(0, 1, 1, 0, 0, 1, -3),
-                       affect.sense = c(0, 1, 1, 0, 0, -2, 0),
-                       happy.feel = c(0, -1, 1, 0, 0, 0, 0))
-contrasts(d_tidy$condition) = contrasts_orth
+anova(r1, r4, r5, r6)
 
-r1 = lmer(responseCoded ~ condition + (1 | worker_id) + (1 | swatch), d_tidy); summary(r1)
-r2 = lmer(responseCoded ~ country + condition + (1 | worker_id) + (1 | swatch), d_tidy); summary(r2)
-r3 = lmer(responseCoded ~ country * condition + (1 | worker_id) + (1 | swatch), d_tidy); summary(r3)
-anova(r3, r2, r1)
 
-# look at animal rating as covariate
-
-d_noanim = d_tidy %>% 
-  full_join(animalrat_us) %>%
-  full_join(animalrat_ind) %>%
-  filter(condition != "animal") %>%
-  mutate(condition = factor(condition),
-         animal_rating_own = ifelse(country == "us",
-                                    animal_rating_us,
-                                    animal_rating_ind))
-View(d_noanim)
-
-contrasts_default2 = contrasts(d_noanim$condition); contrasts_default2
-
-contrasts_orth2 = cbind(bio.psych = c(-1, -1, 2, 2, -1, -1),
-                       hungr.pain = c(0, 0, 1, -1, 0, 0),
-                       experien.think = c(1, 1, 0, 0, 1, -3),
-                       affect.sense = c(1, 1, 0, 0, -2, 0),
-                       happy.feel = c(-1, 1, 0, 0, 0, 0))
-contrasts(d_noanim$condition) = contrasts_orth2
-
-s1 = lmer(responseCoded ~ country + condition + animal_rating_own + (1 | worker_id) + (1 | swatch), d_noanim); summary(s1)
-s2 = lmer(responseCoded ~ country + (condition * animal_rating_own) + (1 | worker_id) + (1 | swatch), d_noanim); summary(s2)
-s3 = lmer(responseCoded ~ country  * condition * animal_rating_own + (1 | worker_id) + (1 | swatch), d_noanim); summary(s3)
-s4 = lmer(responseCoded ~ country  * condition * poly(animal_rating_own, 2) + (1 | worker_id) + (1 | swatch), d_noanim); summary(s4)
-anova(s1, s2, s3, s4)
-
-d_tidy %>% 
-  group_by(country, condition) %>%
-  summarise(mean = mean(responseCoded))
-
-# us
-us_bio = mean(-1.106, -0.497)
-us_psych = > mean(-0.432, -0.588, -0.656, -0.743)
-us_bio.psych = us_bio - us_psych
