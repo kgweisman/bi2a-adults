@@ -442,8 +442,25 @@ r6a = lm(mean ~ poly(animal_selfrank, 3) * condition * country, d_analysis); sum
 anova(r1a, r4a, r5a, r6a)
 
 # look at correlations between countries for rankings and ratings
-with(d_analysis, cor.test(animal_rank_us, animal_rank_india))
-with(d_analysis, cor.test(animal_rat_us, animal_rat_india))
+# with(d_analysis, cor.test(animal_rank_us, animal_rank_india, method = "spearman")) # equivalent to below
+with(d_analysis, cor.test(animal_rat_us, animal_rat_india, method = "spearman"))
+with(d_analysis, cor.test(animal_rat_us, animal_rat_india, method = "pearson"))
+
+sorted_us = d_analysis %>%
+  filter(country == "us") %>%
+  select(swatch, animal_rat_us) %>%
+  distinct() %>%
+  arrange(animal_rat_us)
+View(sorted_us)
+
+sorted_india = d_analysis %>%
+  filter(country == "india") %>%
+  select(swatch, animal_rat_india) %>%
+  distinct() %>%
+  arrange(animal_rat_india)
+View(sorted_india)
+
+
 
 # look at correlations between conditions within each country
 # look at correlations of means (odd)
